@@ -16,6 +16,7 @@
     }
     .nav-link {
       color: #c9d1d9 !important;
+      cursor: pointer;
     }
     .nav-link:hover {
       color: #58a6ff !important;
@@ -33,6 +34,12 @@
     .btn:hover {
       background-color: #2ea043;
     }
+    .tab-pane {
+      display: none;
+    }
+    .tab-pane.active {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -41,25 +48,25 @@
       <a class="navbar-brand text-light" href="#">AllSec TI</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto">
-          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="mostrarAba('home')">Home</a></li>
           <li class="nav-item"><a class="nav-link" onclick="acessarProtegido()">Testes de Sistemas</a></li>
-          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#contato">Contatos</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="mostrarAba('contato')">Contatos</a></li>
         </ul>
       </div>
     </nav>
 
     <div class="tab-content">
-      <div class="tab-pane fade show active" id="home">
+      <div class="tab-pane active" id="home">
         <h2>Bem-vindo à AllSec TI</h2>
         <p>Somos especialistas em segurança da informação, análise de sistemas e testes de vulnerabilidade.</p>
       </div>
 
-      <div class="tab-pane fade" id="sistemas">
+      <div class="tab-pane" id="sistemas">
         <h2>Área Restrita - Testes de Sistemas</h2>
         <p>Relatórios, testes de penetração e validação de segurança estão disponíveis aqui.</p>
       </div>
 
-      <div class="tab-pane fade" id="contato">
+      <div class="tab-pane" id="contato">
         <h2>Contatos</h2>
         <ul class="list-group">
           <li class="list-group-item bg-dark text-light border-secondary">
@@ -76,13 +83,17 @@
   </div>
 
   <script>
+    function mostrarAba(id) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
     function acessarProtegido() {
       const usuario = prompt("Usuário:");
       const senha = prompt("Senha:");
 
       if (usuario === "admin" && senha === "allsec2025") {
-        var triggerTab = new bootstrap.Tab(document.querySelector('[href="#sistemas"]'));
-        triggerTab.show();
+        mostrarAba('sistemas');
       } else {
         alert("Acesso negado!");
       }
