@@ -1,24 +1,63 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AllSecTI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AllSecTI - Sistemas em Teste</title>
   <style>
     body {
-      background-color: #0f0f0f;
-      color: #00ff88;
-      font-family: monospace;
-      text-align: center;
-      padding: 100px;
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
     }
+
     h1 {
-      font-size: 3rem;
+      margin-bottom: 40px;
+    }
+
+    button {
+      background-color: #0052cc;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      min-width: 220px;
+    }
+
+    button:hover {
+      background-color: #003d99;
     }
   </style>
 </head>
 <body>
-  <h1>AllSecTI está online!</h1>
-  <p>Este é um site de teste inicial. 🚧</p>
+  <h1>Sistemas em Teste - AllSecTI</h1>
+
+  <button id="btnRodonaves">Rodonaves Teste</button>
+  <button id="btnOutros">Outros Sistemas em Teste</button>
+
+  <script>
+    document.getElementById('btnRodonaves').addEventListener('click', () => {
+      alert('Rodonaves Teste selecionado!');
+      // Aqui você pode colocar a lógica para abrir o sistema Rodonaves, ex:
+      // window.location.href = 'https://rodonaves.teste.url';
+    });
+
+    document.getElementById('btnOutros').addEventListener('click', () => {
+      alert('Outros Sistemas em Teste selecionados!');
+      // Aqui você pode colocar a lógica para abrir outros sistemas, ex:
+      // window.location.href = 'https://outrosistemas.teste.url';
+    });
+  </script>
 </body>
 </html>
