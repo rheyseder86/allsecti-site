@@ -27,6 +27,12 @@
       border-radius: 10px;
       margin-top: 20px;
     }
+    .tab-pane {
+      display: none;
+    }
+    .tab-pane.active {
+      display: block;
+    }
     .btn {
       background-color: #238636;
       border: none;
@@ -34,40 +40,129 @@
     .btn:hover {
       background-color: #2ea043;
     }
-    .tab-pane {
-      display: none;
+    .card {
+      background-color: #161b22;
+      border: 1px solid #30363d;
     }
-    .tab-pane.active {
-      display: block;
+    .card img {
+      max-height: 150px;
+      object-fit: cover;
+    }
+    .form-control, .form-label {
+      color: #c9d1d9;
+      background-color: #0d1117;
+      border-color: #30363d;
+    }
+    .form-control:focus {
+      background-color: #161b22;
+      color: #c9d1d9;
     }
   </style>
 </head>
 <body>
   <div class="container mt-4">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg mb-3">
       <a class="navbar-brand text-light" href="#">AllSec TI</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto">
           <li class="nav-item"><a class="nav-link" onclick="mostrarAba('home')">Home</a></li>
-          <li class="nav-item"><a class="nav-link" onclick="acessarProtegido()">Testes de Sistemas</a></li>
-          <li class="nav-item"><a class="nav-link" onclick="mostrarAba('contato')">Contatos</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="mostrarAba('portfolio')">Portfólio</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="mostrarAba('galeria')">Galeria</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="mostrarAba('login')">Área Restrita</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="mostrarAba('contato')">Contato</a></li>
         </ul>
       </div>
     </nav>
 
     <div class="tab-content">
+      <!-- Home -->
       <div class="tab-pane active" id="home">
         <h2>Bem-vindo à AllSec TI</h2>
-        <p>Somos especialistas em segurança da informação, análise de sistemas e testes de vulnerabilidade.</p>
+        <p>Especialistas em segurança da informação, análise de sistemas e testes de vulnerabilidade. Protegemos seus dados com tecnologia de ponta.</p>
       </div>
 
+      <!-- Portfólio -->
+      <div class="tab-pane" id="portfolio">
+        <h2>Portfólio</h2>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Teste de Penetração - Sistema Bancário</h5>
+                <p class="card-text">Auditoria completa com mais de 20 vulnerabilidades críticas identificadas.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Firewall e Hardening</h5>
+                <p class="card-text">Configuração de firewall empresarial com política zero trust e segmentação de rede.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Galeria -->
+      <div class="tab-pane" id="galeria">
+        <h2>Galeria de Trabalhos</h2>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <img src="https://via.placeholder.com/300x150?text=Pentest" class="img-fluid rounded" alt="Imagem 1">
+          </div>
+          <div class="col-md-4 mb-3">
+            <img src="https://via.placeholder.com/300x150?text=Data+Center" class="img-fluid rounded" alt="Imagem 2">
+          </div>
+          <div class="col-md-4 mb-3">
+            <img src="https://via.placeholder.com/300x150?text=Análise+de+Risco" class="img-fluid rounded" alt="Imagem 3">
+          </div>
+        </div>
+      </div>
+
+      <!-- Área Restrita -->
+      <div class="tab-pane" id="login">
+        <h2>Acesso Restrito</h2>
+        <form onsubmit="validarLogin(event)">
+          <div class="mb-3">
+            <label for="usuario" class="form-label">Usuário</label>
+            <input type="text" class="form-control" id="usuario" required>
+          </div>
+          <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="senha" required>
+          </div>
+          <button type="submit" class="btn btn-success">Entrar</button>
+        </form>
+      </div>
+
+      <!-- Testes de Sistemas -->
       <div class="tab-pane" id="sistemas">
         <h2>Área Restrita - Testes de Sistemas</h2>
-        <p>Relatórios, testes de penetração e validação de segurança estão disponíveis aqui.</p>
+        <p>Aqui estão disponíveis os relatórios, logs e evidências dos testes realizados.</p>
       </div>
 
+      <!-- Contato -->
       <div class="tab-pane" id="contato">
-        <h2>Contatos</h2>
+        <h2>Contato</h2>
+        <form onsubmit="enviarMensagem(event)">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="mensagem" class="form-label">Mensagem</label>
+            <textarea class="form-control" id="mensagem" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-success">Enviar</button>
+        </form>
+
+        <hr class="my-4">
+
         <ul class="list-group">
           <li class="list-group-item bg-dark text-light border-secondary">
             <strong>Éder Prioli</strong> - Analista de Segurança da Informação<br/>
@@ -82,15 +177,18 @@
     </div>
   </div>
 
+  <!-- Scripts -->
   <script>
     function mostrarAba(id) {
       document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
       document.getElementById(id).classList.add('active');
+      window.location.hash = id;
     }
 
-    function acessarProtegido() {
-      const usuario = prompt("Usuário:");
-      const senha = prompt("Senha:");
+    function validarLogin(event) {
+      event.preventDefault();
+      const usuario = document.getElementById("usuario").value;
+      const senha = document.getElementById("senha").value;
 
       if (usuario === "admin" && senha === "allsec2025") {
         mostrarAba('sistemas');
@@ -98,6 +196,21 @@
         alert("Acesso negado!");
       }
     }
+
+    function enviarMensagem(event) {
+      event.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const msg = document.getElementById("mensagem").value;
+
+      alert(`Mensagem enviada com sucesso!\n\nDe: ${nome}\nEmail: ${email}\n\n${msg}`);
+      // Aqui você pode integrar com backend (ex: PHP, Formspree, etc)
+    }
+
+    window.onload = () => {
+      const abaInicial = window.location.hash.replace('#', '') || 'home';
+      mostrarAba(abaInicial);
+    };
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
