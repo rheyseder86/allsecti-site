@@ -57,7 +57,6 @@
       background-color: #161b22;
       color: #c9d1d9;
     }
-    /* Ajuste para o ícone do toggler no menu hamburguer */
     .navbar-toggler {
       border-color: #c9d1d9;
     }
@@ -85,6 +84,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto">
             <li class="nav-item"><a class="nav-link" onclick="mostrarAba('home')">Home</a></li>
+            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('sobre')">Sobre a Empresa</a></li>
             <li class="nav-item"><a class="nav-link" onclick="mostrarAba('portfolio')">Portfólio</a></li>
             <li class="nav-item"><a class="nav-link" onclick="mostrarAba('galeria')">Galeria</a></li>
             <li class="nav-item"><a class="nav-link" onclick="mostrarAba('login')">Área Restrita</a></li>
@@ -99,6 +99,37 @@
       <div class="tab-pane active" id="home">
         <h2>Bem-vindo à AllSec TI</h2>
         <p>Especialistas em segurança da informação, análise de sistemas e testes de vulnerabilidade. Protegemos seus dados com tecnologia de ponta.</p>
+      </div>
+
+      <!-- Sobre a Empresa -->
+      <div class="tab-pane" id="sobre">
+        <h2>Sobre a AllSec TI</h2>
+        <p>
+          A <strong>AllSec TI</strong> é uma empresa especializada em <strong>segurança cibernética corporativa</strong>, com foco em testes de intrusão, auditoria de sistemas, análise de vulnerabilidades e consultoria estratégica em segurança da informação.
+        </p>
+        <p>
+          Inspirada nos pilares da proteção digital e integridade empresarial, a AllSec TI atua com o compromisso de proteger dados, infraestrutura e reputações, oferecendo soluções sob medida para empresas que levam a sério a segurança do seu ambiente tecnológico.
+        </p>
+        <p>
+          Com uma equipe formada por especialistas certificados e experientes, desenvolvemos projetos com base em <strong>normas internacionais</strong> (ISO/IEC 27001, OWASP, NIST), utilizando as melhores práticas do mercado para garantir <strong>confiabilidade, conformidade e resiliência digital</strong>.
+        </p>
+        <p>
+          Nosso trabalho vai além da identificação de riscos: ajudamos empresas a fortalecer suas defesas, reduzir a superfície de ataque e preparar suas equipes para um cenário cada vez mais ameaçador e sofisticado.
+        </p>
+        <h4 class="mt-4">Missão</h4>
+        <p>Proteger organizações contra ameaças digitais, promovendo uma cultura de segurança robusta, ética e eficaz.</p>
+
+        <h4>Visão</h4>
+        <p>Ser referência nacional em soluções de cibersegurança, reconhecida pela confiança, excelência técnica e impacto positivo nos negócios dos nossos clientes.</p>
+
+        <h4>Valores</h4>
+        <ul>
+          <li>Segurança</li>
+          <li>Transparência</li>
+          <li>Ética</li>
+          <li>Inovação</li>
+          <li>Comprometimento</li>
+        </ul>
       </div>
 
       <!-- Portfólio -->
@@ -118,14 +149,6 @@
               <div class="card-body">
                 <h5 class="card-title">Firewall e Hardening</h5>
                 <p class="card-text">Configuração de firewall empresarial com política zero trust e segmentação de rede.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Consultoria de Segurança</h5>
-                <p class="card-text">Planejamento e implementação de políticas de segurança personalizadas.</p>
               </div>
             </div>
           </div>
@@ -154,17 +177,17 @@
         <form onsubmit="validarLogin(event)">
           <div class="mb-3">
             <label for="usuario" class="form-label">Usuário</label>
-            <input type="text" class="form-control" id="usuario" required autocomplete="username" />
+            <input type="text" class="form-control" id="usuario" required />
           </div>
           <div class="mb-3">
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="senha" required autocomplete="current-password" />
+            <input type="password" class="form-control" id="senha" required />
           </div>
           <button type="submit" class="btn btn-success">Entrar</button>
         </form>
       </div>
 
-      <!-- Testes de Sistemas -->
+      <!-- Conteúdo Restrito -->
       <div class="tab-pane" id="sistemas">
         <h2>Área Restrita - Testes de Sistemas</h2>
         <p>Aqui estão disponíveis os relatórios, logs e evidências dos testes realizados.</p>
@@ -173,18 +196,18 @@
       <!-- Contato -->
       <div class="tab-pane" id="contato">
         <h2>Contato</h2>
-        <form onsubmit="enviarMensagem(event)">
+        <form action="https://formspree.io/f/mgvzwqlr" method="POST">
           <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" required />
+            <input type="text" class="form-control" id="nome" name="nome" required />
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" required />
+            <input type="email" class="form-control" id="email" name="email" required />
           </div>
           <div class="mb-3">
             <label for="mensagem" class="form-label">Mensagem</label>
-            <textarea class="form-control" id="mensagem" rows="4" required></textarea>
+            <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required></textarea>
           </div>
           <button type="submit" class="btn btn-success">Enviar</button>
         </form>
@@ -208,13 +231,11 @@
   <!-- Scripts -->
   <script>
     function mostrarAba(id) {
-      // Fecha menu no celular ao clicar
       const navCollapse = document.getElementById('navbarNav');
       if (navCollapse.classList.contains('show')) {
         const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
         bsCollapse.hide();
       }
-
       document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       window.location.hash = id;
@@ -230,17 +251,6 @@
       } else {
         alert("Acesso negado!");
       }
-    }
-
-    function enviarMensagem(event) {
-      event.preventDefault();
-      const nome = document.getElementById("nome").value;
-      const email = document.getElementById("email").value;
-      const msg = document.getElementById("mensagem").value;
-
-      alert(`Mensagem enviada com sucesso!\n\nDe: ${nome}\nEmail: ${email}\n\n${msg}`);
-      // Aqui você pode integrar com backend (ex: PHP, Formspree, etc)
-      event.target.reset();
     }
 
     window.onload = () => {
