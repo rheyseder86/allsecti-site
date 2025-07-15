@@ -2,16 +2,14 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <title>AllSec TI</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <style>
     body {
       background-color: #0d1117;
       color: #c9d1d9;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      min-height: 100vh;
     }
     .navbar {
       background-color: #161b22;
@@ -49,7 +47,6 @@
     .card img {
       max-height: 150px;
       object-fit: cover;
-      border-radius: 0.5rem;
     }
     .form-control, .form-label {
       color: #c9d1d9;
@@ -65,15 +62,6 @@
     }
     .navbar-toggler-icon {
       filter: invert(1);
-    }
-    .cyber-animate {
-      animation: pulse 2s infinite;
-      color: #58a6ff;
-    }
-    @keyframes pulse {
-      0% { text-shadow: 0 0 0px #58a6ff; }
-      50% { text-shadow: 0 0 10px #58a6ff; }
-      100% { text-shadow: 0 0 0px #58a6ff; }
     }
   </style>
 </head>
@@ -99,6 +87,7 @@
             <li class="nav-item"><a class="nav-link" onclick="mostrarAba('sobre')">Sobre a Empresa</a></li>
             <li class="nav-item"><a class="nav-link" onclick="mostrarAba('portfolio')">Portfólio</a></li>
             <li class="nav-item"><a class="nav-link" onclick="mostrarAba('galeria')">Galeria</a></li>
+            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('login')">Área Restrita</a></li>
             <li class="nav-item"><a class="nav-link" onclick="mostrarAba('contato')">Contato</a></li>
           </ul>
         </div>
@@ -106,40 +95,148 @@
     </nav>
 
     <div class="tab-content">
+      <!-- Home -->
       <div class="tab-pane active" id="home">
-        <h2 class="cyber-animate">Bem-vindo à AllSec TI</h2>
-        <p data-aos="fade-up">Especialistas em segurança da informação, análise de sistemas e testes de vulnerabilidade. Protegemos seus dados com tecnologia de ponta.</p>
+        <h2>Bem-vindo à AllSec TI</h2>
+        <p>Especialistas em segurança da informação, análise de sistemas e testes de vulnerabilidade. Protegemos seus dados com tecnologia de ponta.</p>
       </div>
 
+      <!-- Sobre a Empresa -->
       <div class="tab-pane" id="sobre">
-        <h2 data-aos="fade-right">Sobre a AllSec TI</h2>
-        <p data-aos="fade-left">A <strong>AllSec TI</strong> é uma empresa especializada em <strong>segurança cibernética corporativa</strong>, com foco em testes de intrusão, auditoria de sistemas, análise de vulnerabilidades e consultoria estratégica em segurança da informação.</p>
-        <!-- Demais conteúdos mantidos -->
+        <h2>Sobre a AllSec TI</h2>
+        <p>
+          A <strong>AllSec TI</strong> é uma empresa especializada em <strong>segurança cibernética corporativa</strong>, com foco em testes de intrusão, auditoria de sistemas, análise de vulnerabilidades e consultoria estratégica em segurança da informação.
+        </p>
+        <p>
+          Inspirada nos pilares da proteção digital e integridade empresarial, a AllSec TI atua com o compromisso de proteger dados, infraestrutura e reputações, oferecendo soluções sob medida para empresas que levam a sério a segurança do seu ambiente tecnológico.
+        </p>
+        <p>
+          Com uma equipe formada por especialistas certificados e experientes, desenvolvemos projetos com base em <strong>normas internacionais</strong> (ISO/IEC 27001, OWASP, NIST), utilizando as melhores práticas do mercado para garantir <strong>confiabilidade, conformidade e resiliência digital</strong>.
+        </p>
+        <p>
+          Nosso trabalho vai além da identificação de riscos: ajudamos empresas a fortalecer suas defesas, reduzir a superfície de ataque e preparar suas equipes para um cenário cada vez mais ameaçador e sofisticado.
+        </p>
+        <h4 class="mt-4">Missão</h4>
+        <p>Proteger organizações contra ameaças digitais, promovendo uma cultura de segurança robusta, ética e eficaz.</p>
+
+        <h4>Visão</h4>
+        <p>Ser referência nacional em soluções de cibersegurança, reconhecida pela confiança, excelência técnica e impacto positivo nos negócios dos nossos clientes.</p>
+
+        <h4>Valores</h4>
+        <ul>
+          <li>Segurança</li>
+          <li>Transparência</li>
+          <li>Ética</li>
+          <li>Inovação</li>
+          <li>Comprometimento</li>
+        </ul>
       </div>
 
+      <!-- Portfólio -->
       <div class="tab-pane" id="portfolio">
-        <h2 data-aos="zoom-in">Portfólio</h2>
+        <h2>Portfólio</h2>
         <div class="row">
-          <!-- Cards mantidos -->
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Teste de Penetração - Sistema Bancário</h5>
+                <p class="card-text">Auditoria completa com mais de 20 vulnerabilidades críticas identificadas.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Firewall e Hardening</h5>
+                <p class="card-text">Configuração de firewall empresarial com política zero trust e segmentação de rede.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
+      <!-- Galeria -->
       <div class="tab-pane" id="galeria">
-        <h2 data-aos="flip-up">Galeria de Trabalhos</h2>
+        <h2>Galeria de Trabalhos</h2>
         <div class="row">
-          <!-- Imagens mantidas -->
+          <div class="col-md-4 mb-3">
+            <img src="https://via.placeholder.com/300x150?text=Pentest" class="img-fluid rounded" alt="Imagem 1 - Pentest">
+          </div>
+          <div class="col-md-4 mb-3">
+            <img src="https://via.placeholder.com/300x150?text=Data+Center" class="img-fluid rounded" alt="Imagem 2 - Data Center">
+          </div>
+          <div class="col-md-4 mb-3">
+            <img src="https://via.placeholder.com/300x150?text=Análise+de+Risco" class="img-fluid rounded" alt="Imagem 3 - Análise de Risco">
+          </div>
         </div>
       </div>
 
-      <div class="tab-pane" id="contato">
-        <h2 data-aos="fade-down">Contato</h2>
-        <form action="https://formspree.io/f/mgvzwqlr" method="POST">
-          <!-- Formulário mantido -->
+      <!-- Área Restrita -->
+      <div class="tab-pane" id="login">
+        <h2>Acesso Restrito</h2>
+        <form onsubmit="validarLogin(event)">
+          <div class="mb-3">
+            <label for="usuario" class="form-label">Usuário</label>
+            <input type="text" class="form-control" id="usuario" required />
+          </div>
+          <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="senha" required />
+          </div>
+          <button type="submit" class="btn btn-success">Entrar</button>
         </form>
+      </div>
+
+      <!-- Conteúdo Restrito -->
+      <div class="tab-pane" id="sistemas">
+        <h2>Área Restrita - Testes de Sistemas</h2>
+        <p>Aqui estão disponíveis os relatórios, logs e evidências dos testes realizados.</p>
+      </div>
+
+      <!-- Contato -->
+      <div class="tab-pane" id="contato">
+        <h2>Contato</h2>
+        <form action="https://formspree.io/f/mgvzwqlr" method="POST">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="mensagem" class="form-label">Mensagem</label>
+            <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-success">Enviar</button>
+        </form>
+
+        <hr class="my-4" />
+
+        <ul class="list-group">
+          <li class="list-group-item bg-dark text-light border-secondary">
+            <strong>Eder</strong> - Analista de Segurança da Informação<br />
+            📞 (34) 9 9110-6738
+          </li>
+          <li class="list-group-item bg-dark text-light border-secondary">
+            <strong>Wesley</strong> - Engenheiro de Sistemas<br />
+            📞 (44) 9 9112-2199
+          </li>
+          <li class="list-group-item bg-dark text-light border-secondary">
+            <strong>Livia</strong> - Analista de Sistemas<br />
+            📞 (34) 9 9110-6738
+          </li>
+          <li class="list-group-item bg-dark text-light border-secondary">
+            <strong>Vitor</strong> - Analista de Sistemas / Dev<br />
+            📞 (34) 9 9834-1126
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 
+  <!-- Scripts -->
   <script>
     function mostrarAba(id) {
       const navCollapse = document.getElementById('navbarNav');
@@ -152,6 +249,18 @@
       window.location.hash = id;
     }
 
+    function validarLogin(event) {
+      event.preventDefault();
+      const usuario = document.getElementById("usuario").value;
+      const senha = document.getElementById("senha").value;
+
+      if (usuario === "admin" && senha === "allsec2025") {
+        mostrarAba('sistemas');
+      } else {
+        alert("Acesso negado!");
+      }
+    }
+
     window.onload = () => {
       const abaInicial = window.location.hash.replace('#', '') || 'home';
       if(document.getElementById(abaInicial)) {
@@ -159,11 +268,9 @@
       } else {
         mostrarAba('home');
       }
-      AOS.init();
     };
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 </body>
 </html>
