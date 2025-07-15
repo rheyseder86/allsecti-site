@@ -1,276 +1,687 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <title>AllSec TI</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>AllSec TI - Segurança Cibernética e Análise de Sistemas</title>
+
+    <meta name="description" content="AllSec TI: Especialistas em segurança da informação, testes de penetração, auditoria de sistemas e consultoria estratégica. Protegemos seus dados com tecnologia de ponta."/>
+    <meta name="keywords" content="AllSec TI, segurança da informação, cibersegurança, pentest, teste de intrusão, análise de vulnerabilidades, auditoria de sistemas, consultoria de TI, segurança de dados, proteção digital"/>
+    <meta name="author" content="Equipe AllSec TI"/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="canonical" href="https://www.allsecti.com.br/"/> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
     body {
-      background-color: #0d1117;
-      color: #c9d1d9;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0d1117;
+        color: #c9d1d9;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0; /* Remove margens padrão do body */
+        padding-bottom: 90px; /* Adiciona um padding no fundo do body para que o conteúdo não fique escondido atrás do rodapé fixo */
     }
     .navbar {
-      background-color: #161b22;
+        background-color: #161b22;
     }
     .nav-link {
-      color: #c9d1d9 !important;
-      cursor: pointer;
+        color: #c9d1d9 !important;
+        cursor: pointer;
+        transition: color 0.3s ease, transform 0.2s ease;
     }
     .nav-link:hover {
-      color: #58a6ff !important;
+        color: #58a6ff !important;
+        transform: translateY(-2px);
+    }
+    .nav-link i {
+        margin-right: 8px;
     }
     .tab-content {
-      padding: 20px;
-      background-color: #21262d;
-      border-radius: 10px;
-      margin-top: 20px;
+        padding: 20px;
+        background-color: #21262d;
+        border-radius: 10px;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     .tab-pane {
-      display: none;
+        display: none;
+        animation: fadeIn 0.5s ease-in-out;
     }
     .tab-pane.active {
-      display: block;
+        display: block;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
     .btn {
-      background-color: #238636;
-      border: none;
+        background-color: #238636;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
     }
     .btn:hover {
-      background-color: #2ea043;
+        background-color: #2ea043;
+        transform: translateY(-1px);
     }
     .card {
-      background-color: #161b22;
-      border: 1px solid #30363d;
+        background-color: #161b22;
+        border: 1px solid #30363d;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card-body {
+        flex-grow: 1;
     }
     .card img {
-      max-height: 150px;
-      object-fit: cover;
+        max-height: 180px;
+        object-fit: cover;
+        width: 100%;
+        border-bottom: 1px solid #30363d;
     }
     .form-control, .form-label {
-      color: #c9d1d9;
-      background-color: #0d1117;
-      border-color: #30363d;
+        color: #c9d1d9;
+        background-color: #0d1117;
+        border-color: #30363d;
     }
     .form-control:focus {
-      background-color: #161b22;
-      color: #c9d1d9;
+        background-color: #161b22;
+        color: #c9d1d9;
+        border-color: #58a6ff;
+        box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25);
     }
     .navbar-toggler {
-      border-color: #c9d1d9;
+        border-color: #c9d1d9;
     }
     .navbar-toggler-icon {
-      filter: invert(1);
+        filter: invert(1);
     }
-  </style>
+    .list-group-item {
+        background-color: #161b22 !important;
+        color: #c9d1d9 !important;
+        border-color: #30363d !important;
+    }
+    .invalid-feedback {
+        color: #ff4a4a;
+    }
+    /* Ajuste para espaçamento em telas menores */
+    @media (max-width: 767.98px) {
+        .navbar-nav {
+            margin-top: 10px;
+        }
+    }
+
+    /* Estilos do Rodapé FIXO */
+    .footer {
+        position: fixed; /* Fixa o elemento na tela */
+        bottom: 0; /* Alinha o rodapé à parte inferior da viewport */
+        width: 100%; /* Garante que o rodapé ocupe toda a largura */
+        background-color: #161b22;
+        color: #c9d1d9;
+        padding: 20px 0;
+        border-top: 1px solid #30363d;
+        text-align: center;
+        z-index: 1030; /* Garante que o rodapé fique acima de outros elementos, como o navbar (que tem z-index padrão de 1020) */
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra na parte superior */
+    }
+    .footer .nav-link {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    /* Estilos do Modal Terminal Kali Root */
+    /* Estilos do Modal Terminal com Cores Neutras */
+.modal-terminal .modal-content {
+    background-color: #21262d; /* Fundo mais escuro e neutro */
+    color: #c9d1d9; /* Texto claro padrão */
+    border: 1px solid #30363d; /* Borda sutil */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Sombra mais suave */
+    font-family: 'Consolas', 'Menlo', 'Monaco', monospace; /* Fonte monoespaçada moderna */
+}
+.modal-terminal .modal-header {
+    background-color: #161b22; /* Header ligeiramente mais escuro */
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 5px;
+    color: #c9d1d9; /* Título do modal */
+}
+.modal-terminal .modal-title {
+    color: #c9d1d9;
+    font-weight: normal; /* Sem negrito para um visual mais limpo */
+}
+.modal-terminal .btn-close {
+    filter: none; /* Remove o filtro invert e usa a cor padrão do Bootstrap */
+    color: #c9d1d9; /* Cor do X */
+    opacity: 0.7; /* Transparência para o X */
+}
+.modal-terminal .btn-close:hover {
+    opacity: 1;
+}
+.modal-terminal .modal-body {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.modal-terminal .terminal-line {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 5px; /* Espaçamento entre as linhas */
+}
+.modal-terminal .terminal-input {
+    background-color: #0d1117; /* Fundo do input */
+    border: 1px solid #30363d;
+    border-radius: 4px; /* Levemente arredondado */
+    color: #c9d1d9;
+    width: 100%; /* Ocupa toda a largura do input-group */
+    outline: none;
+    caret-color: #58a6ff; /* Cursor azul sutil */
+    font-family: inherit;
+    padding: 8px 12px;
+}
+.modal-terminal .terminal-input:focus {
+    border-color: #58a6ff; /* Borda azul no foco */
+    box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25); /* Sombra sutil no foco */
+}
+.modal-terminal .input-group-text {
+    background-color: #161b22; /* Fundo do prompt */
+    border: 1px solid #30363d;
+    border-right: none; /* Remove borda direita para conectar com o input */
+    color: #8b949e; /* Cor cinza para o prompt */
+    padding: 8px 12px;
+    border-radius: 4px 0 0 4px; /* Cantos arredondados apenas à esquerda */
+}
+/* Altera o estilo do input para conectar-se ao input-group-text */
+.modal-terminal .input-group > .terminal-input {
+    border-radius: 0 4px 4px 0; /* Cantos arredondados apenas à direita */
+    border-left: none; /* Remove borda esquerda para conectar com o prompt */
+}
+
+.modal-terminal .btn-login-terminal {
+    background-color: #58a6ff; /* Botão azul */
+    color: #fff; /* Texto branco */
+    border: none;
+    margin-top: 15px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.modal-terminal .btn-login-terminal:hover {
+    background-color: #4a9aff; /* Azul mais escuro no hover */
+}
+.modal-footer {
+    border-top: 1px solid #30363d;
+    background-color: #161b22;
+    color: #8b949e; /* Cor neutra para o prompt do rodapé */
+}
+    /* Estilos iOS para Formulário */
+    .ios-input, .ios-textarea {
+        background-color: #0d1117; /* Mesmo que o body */
+        border: 1px solid #30363d; /* Borda sutil */
+        border-radius: 8px; /* Cantos arredondados */
+        color: #c9d1d9;
+        padding: 12px 15px;
+        transition: all 0.3s ease;
+    }
+    .ios-input:focus, .ios-textarea:focus {
+        background-color: #161b22;
+        border-color: #58a6ff;
+        box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25);
+    }
+    /* Oculta os labels visuais para usar placeholders, mas mantém para leitores de tela */
+    .form-label.visually-hidden {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+    }
+
+    /* Estilos iOS para Accordion (Leque de Opções) */
+    .ios-accordion-item {
+        background-color: #161b22; /* Fundo do item do accordion */
+        border: 1px solid #30363d; /* Borda entre os itens */
+        border-radius: 8px; /* Cantos arredondados */
+        margin-bottom: 10px; /* Espaçamento entre os itens */
+        overflow: hidden; /* Garante que os cantos arredondados funcionem */
+    }
+    .ios-accordion-item:last-child {
+        margin-bottom: 0; /* Remove margem do último item */
+    }
+
+    .accordion-button {
+        background-color: #161b22 !important; /* Fundo do botão */
+        color: #c9d1d9 !important; /* Cor do texto do botão */
+        border: none !important;
+        padding: 15px 20px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+    .accordion-button:not(.collapsed) {
+        background-color: #21262d !important; /* Fundo quando expandido */
+        color: #58a6ff !important; /* Cor do texto quando expandido */
+        box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+    }
+    .accordion-button::after {
+        filter: invert(1); /* Inverte a cor da seta do accordion para ser visível */
+    }
+    .accordion-button:focus {
+        border-color: #58a6ff;
+        box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25);
+    }
+
+    .accordion-body {
+        background-color: #21262d; /* Fundo do conteúdo expandido */
+        color: #c9d1d9;
+        padding: 15px 20px;
+        border-top: 1px solid #30363d; /* Borda interna */
+    }
+    .accordion-body a {
+        color: #58a6ff; /* Cor do link do WhatsApp */
+        text-decoration: none;
+    }
+    .accordion-body a:hover {
+        text-decoration: underline;
+    }
+</style>
 </head>
 <body>
-  <div class="container mt-4">
-    <nav class="navbar navbar-expand-lg mb-3">
-      <div class="container-fluid px-0">
-        <a class="navbar-brand text-light" href="#">AllSec TI</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Alternar menu de navegação"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('home')">Home</a></li>
-            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('sobre')">Sobre a Empresa</a></li>
-            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('portfolio')">Portfólio</a></li>
-            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('galeria')">Galeria</a></li>
-            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('login')">Área Restrita</a></li>
-            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('contato')">Contato</a></li>
-          </ul>
+    <div class="container mt-4">
+        <header>
+            <nav class="navbar navbar-expand-lg mb-3" aria-label="Menu Principal de Navegação">
+                <div class="container-fluid px-0">
+                    <a class="navbar-brand text-light" href="#" aria-label="Página Inicial AllSec TI">AllSec TI</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Alternar menu de navegação"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('home')" aria-current="page"><i class="fas fa-home"></i>Home</a></li>
+                            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('sobre')"><i class="fas fa-info-circle"></i>Sobre a Empresa</a></li>
+                            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('portfolio')"><i class="fas fa-briefcase"></i>Portfólio</a></li>
+                            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('galeria')"><i class="fas fa-images"></i>Galeria</a></li>
+                            <li class="nav-item"><a class="nav-link" onclick="mostrarAba('contato')"><i class="fas fa-envelope"></i>Contato</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="tab-content">
+                <section class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h2>Bem-vindo à AllSec TI</h2>
+                    <p>Especialistas em segurança da informação, análise de sistemas e testes de vulnerabilidade. Protegemos seus dados com tecnologia de ponta.</p>
+                </section>
+
+                <section class="tab-pane" id="sobre" role="tabpanel" aria-labelledby="sobre-tab">
+                    <h2>Sobre a AllSec TI</h2>
+                    <p>
+                        A <strong>AllSec TI</strong> é uma empresa especializada em <strong>segurança cibernética corporativa</strong>, com foco em testes de intrusão, auditoria de sistemas, análise de vulnerabilidades e consultoria estratégica em segurança da informação.
+                    </p>
+                    <p>
+                        Inspirada nos pilares da proteção digital e integridade empresarial, a AllSec TI atua com o compromisso de proteger dados, infraestrutura e reputações, oferecendo soluções sob medida para empresas que levam a sério a segurança do seu ambiente tecnológico.
+                    </p>
+                    <p>
+                        Com uma equipe formada por especialistas certificados e experientes, desenvolvemos projetos com base em <strong>normas internacionais</strong> (ISO/IEC 27001, OWASP, NIST), utilizando as melhores práticas do mercado para garantir <strong>confiabilidade, conformidade e resiliência digital</strong>.
+                    </p>
+                    <p>
+                        Nosso trabalho vai além da identificação de riscos: ajudamos empresas a fortalecer suas defesas, reduzir a superfície de ataque e preparar suas equipes para um cenário cada vez mais ameaçador e sofisticado.
+                    </p>
+                    <h4 class="mt-4">Missão</h4>
+                    <p>Proteger organizações contra ameaças digitais, promovendo uma cultura de segurança robusta, ética e eficaz.</p>
+
+                    <h4>Visão</h4>
+                    <p>Ser referência nacional em soluções de cibersegurança, reconhecida pela confiança, excelência técnica e impacto positivo nos negócios dos nossos clientes.</p>
+
+                    <h4>Valores</h4>
+                    <ul>
+                        <li>Segurança</li>
+                        <li>Transparência</li>
+                        <li>Ética</li>
+                        <li>Inovação</li>
+                        <li>Comprometimento</li>
+                    </ul>
+                </section>
+
+                <section class="tab-pane" id="portfolio" role="tabpanel" aria-labelledby="portfolio-tab">
+                    <h2>Portfólio</h2>
+                    <div class="row" id="portfolio-items">
+                        </div>
+                </section>
+
+                <section class="tab-pane" id="galeria" role="tabpanel" aria-labelledby="galeria-tab">
+                    <h2>Galeria de Trabalhos</h2>
+                    <div class="row" id="galeria-items">
+                        </div>
+                </section>
+
+                <section class="tab-pane" id="sistemas" role="tabpanel" aria-labelledby="sistemas-tab">
+                    <h2>Área Restrita - Testes de Sistemas</h2>
+                    <p>Bem-vindo, *root*! Aqui estão disponíveis os relatórios, logs e evidências dos testes realizados.</p>
+                    <p>Lembre-se: em um ambiente real, este conteúdo seria carregado de forma segura do servidor após a autenticação bem-sucedida.</p>
+                    <p>Para sair da área restrita, basta selecionar outra aba de navegação.</p>
+                </section>
+
+                <section class="tab-pane" id="contato" role="tabpanel" aria-labelledby="contato-tab">
+    <h2>Contato</h2>
+    <form action="https://formspree.io/f/mgvzwqlr" method="POST" class="needs-validation" novalidate>
+        <h4 class="mb-3">Envie-nos uma Mensagem</h4>
+        <div class="mb-3">
+            <label for="nome" class="form-label visually-hidden">Nome</label>
+            <input type="text" class="form-control ios-input" id="nome" name="nome" placeholder="Seu Nome Completo" required aria-required="true"/>
+            <div class="invalid-feedback">Por favor, insira seu nome.</div>
         </div>
-      </div>
-    </nav>
+        <div class="mb-3">
+            <label for="email" class="form-label visually-hidden">Email</label>
+            <input type="email" class="form-control ios-input" id="email" name="email" placeholder="seu.email@exemplo.com" required aria-required="true"/>
+            <div class="invalid-feedback">Por favor, insira um email válido.</div>
+        </div>
+        <div class="mb-3">
+            <label for="assunto" class="form-label visually-hidden">Assunto</label>
+            <input type="text" class="form-control ios-input" id="assunto" name="assunto" placeholder="Assunto da Mensagem (Opcional)" />
+        </div>
+        <div class="mb-4">
+            <label for="mensagem" class="form-label visually-hidden">Mensagem</label>
+            <textarea class="form-control ios-textarea" id="mensagem" name="mensagem" rows="6" placeholder="Digite sua mensagem aqui..." required aria-required="true"></textarea>
+            <div class="invalid-feedback">Por favor, digite sua mensagem.</div>
+        </div>
+        <button type="submit" class="btn btn-success w-100"><i class="fas fa-paper-plane"></i> Enviar Mensagem</button>
+    </form>
 
-    <div class="tab-content">
-      <!-- Home -->
-      <div class="tab-pane active" id="home">
-        <h2>Bem-vindo à AllSec TI</h2>
-        <p>Especialistas em segurança da informação, análise de sistemas e testes de vulnerabilidade. Protegemos seus dados com tecnologia de ponta.</p>
-      </div>
+    <hr class="my-5" />
 
-      <!-- Sobre a Empresa -->
-      <div class="tab-pane" id="sobre">
-        <h2>Sobre a AllSec TI</h2>
-        <p>
-          A <strong>AllSec TI</strong> é uma empresa especializada em <strong>segurança cibernética corporativa</strong>, com foco em testes de intrusão, auditoria de sistemas, análise de vulnerabilidades e consultoria estratégica em segurança da informação.
-        </p>
-        <p>
-          Inspirada nos pilares da proteção digital e integridade empresarial, a AllSec TI atua com o compromisso de proteger dados, infraestrutura e reputações, oferecendo soluções sob medida para empresas que levam a sério a segurança do seu ambiente tecnológico.
-        </p>
-        <p>
-          Com uma equipe formada por especialistas certificados e experientes, desenvolvemos projetos com base em <strong>normas internacionais</strong> (ISO/IEC 27001, OWASP, NIST), utilizando as melhores práticas do mercado para garantir <strong>confiabilidade, conformidade e resiliência digital</strong>.
-        </p>
-        <p>
-          Nosso trabalho vai além da identificação de riscos: ajudamos empresas a fortalecer suas defesas, reduzir a superfície de ataque e preparar suas equipes para um cenário cada vez mais ameaçador e sofisticado.
-        </p>
-        <h4 class="mt-4">Missão</h4>
-        <p>Proteger organizações contra ameaças digitais, promovendo uma cultura de segurança robusta, ética e eficaz.</p>
-
-        <h4>Visão</h4>
-        <p>Ser referência nacional em soluções de cibersegurança, reconhecida pela confiança, excelência técnica e impacto positivo nos negócios dos nossos clientes.</p>
-
-        <h4>Valores</h4>
-        <ul>
-          <li>Segurança</li>
-          <li>Transparência</li>
-          <li>Ética</li>
-          <li>Inovação</li>
-          <li>Comprometimento</li>
-        </ul>
-      </div>
-
-      <!-- Portfólio -->
-      <div class="tab-pane" id="portfolio">
-        <h2>Portfólio</h2>
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Teste de Penetração - Sistema Bancário</h5>
-                <p class="card-text">Auditoria completa com mais de 20 vulnerabilidades críticas identificadas.</p>
-              </div>
+    <h3>Fale com Nossa Equipe</h3>
+    <div class="accordion accordion-flush" id="contatoAccordion">
+        <div class="accordion-item ios-accordion-item">
+            <h2 class="accordion-header" id="headingEder">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEder" aria-expanded="false" aria-controls="collapseEder">
+                    <i class="fas fa-user-shield me-2"></i> **Eder** - Analista de Segurança da Informação
+                </button>
+            </h2>
+            <div id="collapseEder" class="accordion-collapse collapse" aria-labelledby="headingEder" data-bs-parent="#contatoAccordion">
+                <div class="accordion-body">
+                    📞 (34) 9 9110-6738
+                    <br><i class="fab fa-whatsapp text-success me-1"></i> <a href="https://wa.me/5534991106738" target="_blank" class="text-info">Enviar WhatsApp</a>
+                </div>
             </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Firewall e Hardening</h5>
-                <p class="card-text">Configuração de firewall empresarial com política zero trust e segmentação de rede.</p>
-              </div>
+        </div>
+
+        <div class="accordion-item ios-accordion-item">
+            <h2 class="accordion-header" id="headingWesley">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWesley" aria-expanded="false" aria-controls="collapseWesley">
+                    <i class="fas fa-laptop-code me-2"></i> **Wesley** - Engenheiro de Sistemas
+                </button>
+            </h2>
+            <div id="collapseWesley" class="accordion-collapse collapse" aria-labelledby="headingWesley" data-bs-parent="#contatoAccordion">
+                <div class="accordion-body">
+                    📞 (44) 9 9112-2199
+                    <br><i class="fab fa-whatsapp text-success me-1"></i> <a href="https://wa.me/5544991122199" target="_blank" class="text-info">Enviar WhatsApp</a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
 
-      <!-- Galeria -->
-      <div class="tab-pane" id="galeria">
-        <h2>Galeria de Trabalhos</h2>
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <img src="https://via.placeholder.com/300x150?text=Pentest" class="img-fluid rounded" alt="Imagem 1 - Pentest">
-          </div>
-          <div class="col-md-4 mb-3">
-            <img src="https://via.placeholder.com/300x150?text=Data+Center" class="img-fluid rounded" alt="Imagem 2 - Data Center">
-          </div>
-          <div class="col-md-4 mb-3">
-            <img src="https://via.placeholder.com/300x150?text=Análise+de+Risco" class="img-fluid rounded" alt="Imagem 3 - Análise de Risco">
-          </div>
+        <div class="accordion-item ios-accordion-item">
+            <h2 class="accordion-header" id="headingLivia">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLivia" aria-expanded="false" aria-controls="collapseLivia">
+                    <i class="fas fa-chart-line me-2"></i> **Livia** - Analista de Sistemas
+                </button>
+            </h2>
+            <div id="collapseLivia" class="accordion-collapse collapse" aria-labelledby="headingLivia" data-bs-parent="#contatoAccordion">
+                <div class="accordion-body">
+                    📞 (34) 9 9236-2343
+                    <br><i class="fab fa-whatsapp text-success me-1"></i> <a href="https://wa.me/5534992362343" target="_blank" class="text-info">Enviar WhatsApp</a>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <!-- Área Restrita -->
-      <div class="tab-pane" id="login">
-        <h2>Acesso Restrito</h2>
-        <form onsubmit="validarLogin(event)">
-          <div class="mb-3">
-            <label for="usuario" class="form-label">Usuário</label>
-            <input type="text" class="form-control" id="usuario" required />
-          </div>
-          <div class="mb-3">
-            <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="senha" required />
-          </div>
-          <button type="submit" class="btn btn-success">Entrar</button>
-        </form>
-      </div>
-
-      <!-- Conteúdo Restrito -->
-      <div class="tab-pane" id="sistemas">
-        <h2>Área Restrita - Testes de Sistemas</h2>
-        <p>Aqui estão disponíveis os relatórios, logs e evidências dos testes realizados.</p>
-      </div>
-
-      <!-- Contato -->
-      <div class="tab-pane" id="contato">
-        <h2>Contato</h2>
-        <form action="https://formspree.io/f/mgvzwqlr" method="POST">
-          <div class="mb-3">
-            <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" required />
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required />
-          </div>
-          <div class="mb-3">
-            <label for="mensagem" class="form-label">Mensagem</label>
-            <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-success">Enviar</button>
-        </form>
-
-        <hr class="my-4" />
-
-        <ul class="list-group">
-          <li class="list-group-item bg-dark text-light border-secondary">
-            <strong>Eder</strong> - Analista de Segurança da Informação<br />
-            📞 (34) 9 9110-6738
-          </li>
-          <li class="list-group-item bg-dark text-light border-secondary">
-            <strong>Wesley</strong> - Engenheiro de Sistemas<br />
-            📞 (44) 9 9112-2199
-          </li>
-          <li class="list-group-item bg-dark text-light border-secondary">
-            <strong>Livia</strong> - Analista de Sistemas<br />
-            📞 (34) 9 9236-2343
-          </li>
-          <li class="list-group-item bg-dark text-light border-secondary">
-            <strong>Vitor</strong> - Analista de Sistemas / Dev<br />
-            📞 (34) 9 9834-1126
-          </li>
-        </ul>
-      </div>
+        <div class="accordion-item ios-accordion-item">
+            <h2 class="accordion-header" id="headingVitor">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVitor" aria-expanded="false" aria-controls="collapseVitor">
+                    <i class="fas fa-code me-2"></i> **Vitor** - Analista de Sistemas / Dev
+                </button>
+            </h2>
+            <div id="collapseVitor" class="accordion-collapse collapse" aria-labelledby="headingVitor" data-bs-parent="#contatoAccordion">
+                <div class="accordion-body">
+                    📞 (34) 9 9834-1126
+                    <br><i class="fab fa-whatsapp text-success me-1"></i> <a href="https://wa.me/5534998341126" target="_blank" class="text-info">Enviar WhatsApp</a>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</section>
+            </div>
+        </main>
+    </div>
 
-  <!-- Scripts -->
-  <script>
-    function mostrarAba(id) {
-      const navCollapse = document.getElementById('navbarNav');
-      if (navCollapse.classList.contains('show')) {
-        const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
-        bsCollapse.hide();
-      }
-      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      window.location.hash = id;
+    <footer class="footer">
+        <div class="container">
+            <a href="#" class="nav-link text-muted" data-bs-toggle="modal" data-bs-target="#loginTerminalModal" aria-label="Acessar Área Restrita"><i class="fas fa-lock"></i> Área Restrita</a>
+            <p class="mt-2 mb-0">© 2025 AllSec TI. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div class="modal fade modal-terminal" id="loginTerminalModal" tabindex="-1" aria-labelledby="loginTerminalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginTerminalModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="terminal-line">Login required to access restricted area.</p>
+                    <p class="terminal-line">Enter your credentials:</p>
+                    <form onsubmit="validarLoginTerminal(event)">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">Username:</span>
+                            <input type="text" class="form-control terminal-input" id="terminal-usuario" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Password:</span>
+                            <input type="password" class="form-control terminal-input" id="terminal-senha" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+                        </div>
+                        <button type="submit" class="btn btn-block btn-login-terminal"><i class="fas fa-terminal"></i> Enter</button>
+                    </form>
+                    <div id="terminal-feedback" class="terminal-line mt-2" style="color: #ff4a4a;"></div>
+                </div>
+                <div class="modal-footer">
+                    <p class="terminal-line mb-0">Terminal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Dados do Portfólio (simulando um carregamento dinâmico)
+        const portfolioData = [
+            {
+                title: "Teste de Penetração - Sistema Bancário",
+                description: "Auditoria completa em sistema bancário com identificação e correção de mais de 20 vulnerabilidades críticas, incluindo falhas de injeção SQL e XSS.",
+                image: "https://via.placeholder.com/300x180?text=Pentest+Bancário"
+            },
+            {
+                title: "Configuração de Firewall e Hardening de Servidores",
+                description: "Implementação de política de segurança 'Zero Trust', segmentação de rede e hardening de 15 servidores Linux e Windows para máxima proteção.",
+                image: "https://via.placeholder.com/300x180?text=Firewall+Hardening"
+            },
+            {
+                title: "Auditoria de Segurança em Aplicação Web",
+                description: "Análise profunda de vulnerabilidades em aplicação e-commerce, resultando na correção de falhas de autenticação e autorização.",
+                image: "https://via.placeholder.com/300x180?text=Auditoria+Web"
+            },
+             {
+                title: "Plano de Resposta a Incidentes",
+                description: "Desenvolvimento e treinamento de um plano de resposta a incidentes cibernéticos, reduzindo o tempo de recuperação em 40%.",
+                image: "https://via.placeholder.com/300x180?text=Resposta+a+Incidentes"
+            }
+        ];
+
+        // Dados da Galeria (simulando um carregamento dinâmico)
+        const galleryData = [
+            { src: "https://via.placeholder.com/400x250?text=Equipe+Pentest", alt: "Equipe realizando pentest em ambiente controlado" },
+            { src: "https://via.placeholder.com/400x250?text=Monitoramento+Rede", alt: "Monitoramento de segurança de rede em tempo real" },
+            { src: "https://via.placeholder.com/400x250?text=Análise+Forensics", alt: "Análise forense digital de dados" },
+            { src: "https://via.placeholder.com/400x250?text=Consultoria+Ciber", alt: "Consultoria em cibersegurança com cliente" },
+            { src: "https://via.placeholder.com/400x250?text=Treinamento+Segurança", alt: "Sessão de treinamento de segurança para funcionários" },
+            { src: "https://via.placeholder.com/400x250?text=Criptografia+Dados", alt: "Conceitos de criptografia de dados em ação" }
+        ];
+
+        let loggedIn = false; // Estado de login
+
+        function mostrarAba(id) {
+            // Se tentar acessar uma aba que não seja 'sistemas' e estiver logado, faz logout
+            if (loggedIn && id !== 'sistemas') {
+                loggedIn = false; // Resetar o estado de login
+                // Opcional: mostrar uma mensagem de logout
+                // alert("Você saiu da área restrita.");
+            }
+
+            // Fecha o menu de navegação responsivo se estiver aberto
+            const navCollapse = document.getElementById('navbarNav');
+            if (navCollapse.classList.contains('show')) {
+                const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+                bsCollapse.hide();
+            }
+
+            // Remove a classe 'active' de todas as abas
+            document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+            // Adiciona a classe 'active' à aba desejada
+            document.getElementById(id).classList.add('active');
+
+            // Atualiza a URL com a hash da aba para permitir compartilhamento e recarregamento
+            window.location.hash = id;
+
+            // Carrega o conteúdo dinâmico se for a aba de portfólio ou galeria
+            if (id === 'portfolio') {
+                renderPortfolio();
+            } else if (id === 'galeria') {
+                renderGallery();
+            }
+        }
+
+        function validarLoginTerminal(event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
+
+    const usuarioInput = document.getElementById("terminal-usuario");
+    const senhaInput = document.getElementById("terminal-senha");
+    const feedbackDiv = document.getElementById("terminal-feedback");
+
+    feedbackDiv.textContent = ''; // Limpa mensagens anteriores
+
+    const usuario = usuarioInput.value.trim();
+    const senha = senhaInput.value.trim();
+
+    // Simulação da "criptografia" com WPA2 (conceitual)
+    // Em um sistema real, aqui você enviaria as credenciais via HTTPS para um servidor
+    // que faria o hash da senha (ex: bcrypt) e compararia com o hash armazenado.
+    console.log(`[WPA2] Tentativa de autenticação para usuário: ${usuario}`);
+    console.log(`[WPA2] Hash (simulado) da senha para verificação.`);
+
+    if (usuario === "admin" && senha === "allsec2025") {
+        feedbackDiv.style.color = '#58a6ff'; // Mudar cor para um azul de sucesso
+        feedbackDiv.textContent = 'Autenticação concluída! Conexão segura [WPA2].';
+        loggedIn = true; // Define o estado de login como verdadeiro
+
+        // Esconde o modal após um pequeno atraso para a mensagem ser lida
+        setTimeout(() => {
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginTerminalModal'));
+            loginModal.hide();
+            mostrarAba('sistemas'); // Redireciona para a aba de sistemas
+            usuarioInput.value = ''; // Limpa os campos
+            senhaInput.value = '';
+            feedbackDiv.textContent = ''; // Limpa o feedback para a próxima vez
+        }, 1500);
+
+    } else {
+        feedbackDiv.style.color = '#ff4a4a';
+        feedbackDiv.textContent = 'Falha na autenticação. Credenciais inválidas [WPA2_ERROR].';
+        usuarioInput.value = ''; // Limpa os campos em caso de erro
+        senhaInput.value = '';
+        usuarioInput.focus(); // Foca no campo de usuário para nova tentativa
     }
+}
 
-    function validarLogin(event) {
-      event.preventDefault();
-      const usuario = document.getElementById("usuario").value;
-      const senha = document.getElementById("senha").value;
+        function renderPortfolio() {
+            const portfolioContainer = document.getElementById('portfolio-items');
+            portfolioContainer.innerHTML = ''; // Limpa o conteúdo existente
 
-      if (usuario === "admin" && senha === "allsec2025") {
-        mostrarAba('sistemas');
-      } else {
-        alert("Acesso negado!");
-      }
-    }
+            portfolioData.forEach(item => {
+                const colDiv = document.createElement('div');
+                colDiv.className = 'col-md-4 mb-3';
+                colDiv.innerHTML = `
+                    <div class="card">
+                        ${item.image ? `<img src="${item.image}" class="card-img-top" alt="${item.title}">` : ''}
+                        <div class="card-body">
+                            <h5 class="card-title">${item.title}</h5>
+                            <p class="card-text">${item.description}</p>
+                        </div>
+                    </div>
+                `;
+                portfolioContainer.appendChild(colDiv);
+            });
+        }
 
-    window.onload = () => {
-      const abaInicial = window.location.hash.replace('#', '') || 'home';
-      if(document.getElementById(abaInicial)) {
-        mostrarAba(abaInicial);
-      } else {
-        mostrarAba('home');
-      }
-    };
-  </script>
+        function renderGallery() {
+            const galleryContainer = document.getElementById('galeria-items');
+            galleryContainer.innerHTML = ''; // Limpa o conteúdo existente
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            galleryData.forEach(item => {
+                const colDiv = document.createElement('div');
+                colDiv.className = 'col-md-4 mb-3';
+                colDiv.innerHTML = `
+                    <img src="${item.src}" class="img-fluid rounded" alt="${item.alt}" loading="lazy">
+                `;
+                galleryContainer.appendChild(colDiv);
+            });
+        }
+
+        // Validação de formulário de contato com Bootstrap
+        (function () {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+
+
+        // Carrega a aba correta ao carregar a página
+        window.onload = () => {
+            const abaInicial = window.location.hash.replace('#', '') || 'home';
+            if (document.getElementById(abaInicial)) {
+                mostrarAba(abaInicial);
+            } else {
+                mostrarAba('home'); // Redireciona para home se a hash for inválida
+            }
+        };
+
+        // Event listener para quando o modal de login é aberto
+        document.getElementById('loginTerminalModal').addEventListener('shown.bs.modal', function () {
+            document.getElementById('terminal-usuario').focus(); // Foca no campo de usuário ao abrir
+            document.getElementById('terminal-feedback').textContent = ''; // Limpa feedback anterior
+        });
+    </script>
 </body>
 </html>
