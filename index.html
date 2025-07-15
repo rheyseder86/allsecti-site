@@ -9,8 +9,7 @@
     <meta name="keywords" content="AllSec TI, segurança da informação, cibersegurança, pentest, teste de intrusão, análise de vulnerabilidades, auditoria de sistemas, consultoria de TI, segurança de dados, proteção digital"/>
     <meta name="author" content="Equipe AllSec TI"/>
     <meta name="robots" content="index, follow"/>
-    <link rel="canonical" href="https://www.allsecti.com.br/"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="canonical" href="https://www.allsecti.com.br/"/> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
@@ -18,57 +17,10 @@
             background-color: #0d1117;
             color: #c9d1d9;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding-bottom: 90px; /* Adiciona um padding no fundo do body para que o conteúdo não fique escondido atrás do rodapé fixo */
-            position: relative; /* Necessário para posicionar o pseudo-elemento da marca d'água */
-            z-index: 0; /* Garante que o body esteja em uma camada base */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Garante que o rodapé fique no final */
         }
-
-        /* Estilo para o Logo como Marca D'água */
-        body::before {
-            content: ""; /* Essencial para pseudo-elementos */
-            background-image: url('images/Gemini_Generated_Image_h3yxl8h3yxl8h3yx.png'); /* Caminho para o seu logo */
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: 60%; /* Ajuste o tamanho da marca d'água (ex: 50% ou 70%) */
-            position: fixed; /* Fixa a marca d'água na tela */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.05; /* Ajuste a opacidade (de 0.01 a 0.1 para sutileza) */
-            z-index: -1; /* Coloca a marca d'água atrás do conteúdo */
-            pointer-events: none; /* Garante que não interfira com cliques e interações */
-        }
-
-        /* Estilos do Logo na Navbar */
-        .navbar-logo {
-            height: 40px; /* Ajuste a altura conforme necessário */
-            width: auto; /* Mantém a proporção da imagem */
-            filter: brightness(1.2); /* Opcional: para realçar um pouco o logo em fundos escuros */
-            transition: transform 0.3s ease; /* Animação ao passar o mouse */
-        }
-
-        .navbar-logo:hover {
-            transform: scale(1.05); /* Leve aumento no tamanho ao passar o mouse */
-        }
-
-        /* Ajuste para o texto do brand caso ele volte a ser usado ou para espaçamento */
-        .navbar-brand {
-            padding-top: .3125rem;
-            padding-bottom: .3125rem;
-            margin-right: 1rem; /* Espaçamento entre o logo e os itens do menu */
-            font-size: 1.25rem;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-
-        /* Garante que o conteúdo principal fique visível e acima da marca d'água */
-        .container, .modal-terminal, .footer {
-            position: relative; /* Garante que esses elementos criem um novo contexto de empilhamento */
-            z-index: 1; /* Coloca-os acima do pseudo-elemento com z-index de -1 */
-        }
-
         .navbar {
             background-color: #161b22;
         }
@@ -90,6 +42,7 @@
             border-radius: 10px;
             margin-top: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
         }
         .tab-pane {
             display: none;
@@ -165,178 +118,79 @@
             }
         }
 
-        /* Estilos do Rodapé FIXO */
+        /* Estilos do Rodapé */
         .footer {
-            position: fixed; /* Fixa o elemento na tela */
-            bottom: 0; /* Alinha o rodapé à parte inferior da viewport */
-            width: 100%; /* Garante que o rodapé ocupe toda a largura */
             background-color: #161b22;
             color: #c9d1d9;
             padding: 20px 0;
+            margin-top: 30px;
             border-top: 1px solid #30363d;
             text-align: center;
-            z-index: 1030; /* Garante que o rodapé fique acima de outros elementos, como o navbar (que tem z-index padrão de 1020) */
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra na parte superior */
         }
         .footer .nav-link {
             display: inline-block;
             margin: 0 10px;
         }
 
-        /* Estilos do Modal Terminal com Cores Neutras */
+        /* Estilos do Modal Terminal Kali Root */
         .modal-terminal .modal-content {
-            background-color: #21262d; /* Fundo mais escuro e neutro */
-            color: #c9d1d9; /* Texto claro padrão */
-            border: 1px solid #30363d; /* Borda sutil */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Sombra mais suave */
-            font-family: 'Consolas', 'Menlo', 'Monaco', monospace; /* Fonte monoespaçada moderna */
+            background-color: #000; /* Fundo preto */
+            color: #0f0; /* Texto verde neon */
+            border: 2px solid #0f0; /* Borda verde */
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Sombra neon */
+            font-family: 'Hack', 'Fira Code', 'monospace'; /* Fonte monoespaçada */
         }
         .modal-terminal .modal-header {
-            background-color: #161b22; /* Header ligeiramente mais escuro */
-            border-bottom: 1px solid #30363d;
+            background-color: #000;
+            border-bottom: 1px solid #0f0;
             padding-bottom: 5px;
-            color: #c9d1d9; /* Título do modal */
         }
         .modal-terminal .modal-title {
-            color: #c9d1d9;
-            font-weight: normal; /* Sem negrito para um visual mais limpo */
+            color: #0f0;
+            font-weight: bold;
         }
         .modal-terminal .btn-close {
-            filter: none; /* Remove o filtro invert e usa a cor padrão do Bootstrap */
-            color: #c9d1d9; /* Cor do X */
-            opacity: 0.7; /* Transparência para o X */
-        }
-        .modal-terminal .btn-close:hover {
-            opacity: 1;
+            filter: invert(1); /* Fecha o botão com a cor do tema */
         }
         .modal-terminal .modal-body {
-            padding-top: 15px;
-            padding-bottom: 15px;
+            padding-top: 10px;
         }
         .modal-terminal .terminal-line {
-            white-space: pre-wrap;
+            white-space: pre-wrap; /* Permite quebras de linha */
             word-wrap: break-word;
-            margin-bottom: 5px; /* Espaçamento entre as linhas */
         }
         .modal-terminal .terminal-input {
-            background-color: #0d1117; /* Fundo do input */
-            border: 1px solid #30363d;
-            border-radius: 4px; /* Levemente arredondado */
-            color: #c9d1d9;
-            width: 100%; /* Ocupa toda a largura do input-group */
+            background-color: transparent;
+            border: none;
+            color: #0f0;
+            width: calc(100% - 30px); /* Ajusta a largura para o prompt */
             outline: none;
-            caret-color: #58a6ff; /* Cursor azul sutil */
+            caret-color: #0f0; /* Cor do cursor */
             font-family: inherit;
-            padding: 8px 12px;
         }
-        .modal-terminal .terminal-input:focus {
-            border-color: #58a6ff; /* Borda azul no foco */
-            box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25); /* Sombra sutil no foco */
+        .modal-terminal .form-control:focus {
+            box-shadow: none; /* Remove box-shadow do Bootstrap no foco */
+            border-color: transparent;
         }
         .modal-terminal .input-group-text {
-            background-color: #161b22; /* Fundo do prompt */
-            border: 1px solid #30363d;
-            border-right: none; /* Remove borda direita para conectar com o input */
-            color: #8b949e; /* Cor cinza para o prompt */
-            padding: 8px 12px;
-            border-radius: 4px 0 0 4px; /* Cantos arredondados apenas à esquerda */
-        }
-        /* Altera o estilo do input para conectar-se ao input-group-text */
-        .modal-terminal .input-group > .terminal-input {
-            border-radius: 0 4px 4px 0; /* Cantos arredondados apenas à direita */
-            border-left: none; /* Remove borda esquerda para conectar com o prompt */
-        }
-
-        .modal-terminal .btn-login-terminal {
-            background-color: #58a6ff; /* Botão azul */
-            color: #fff; /* Texto branco */
+            background-color: transparent;
             border: none;
-            margin-top: 15px;
-            font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            color: #0f0;
+            padding-left: 0;
+        }
+        .modal-terminal .btn-login-terminal {
+            background-color: #0f0;
+            color: #000;
+            border: none;
+            margin-top: 10px;
+            font-weight: bold;
         }
         .modal-terminal .btn-login-terminal:hover {
-            background-color: #4a9aff; /* Azul mais escuro no hover */
+            background-color: #0a0;
         }
         .modal-footer {
-            border-top: 1px solid #30363d;
-            background-color: #161b22;
-            color: #8b949e; /* Cor neutra para o prompt do rodapé */
-        }
-        /* Estilos iOS para Formulário */
-        .ios-input, .ios-textarea {
-            background-color: #0d1117; /* Mesmo que o body */
-            border: 1px solid #30363d; /* Borda sutil */
-            border-radius: 8px; /* Cantos arredondados */
-            color: #c9d1d9;
-            padding: 12px 15px;
-            transition: all 0.3s ease;
-        }
-        .ios-input:focus, .ios-textarea:focus {
-            background-color: #161b22;
-            border-color: #58a6ff;
-            box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25);
-        }
-        /* Oculta os labels visuais para usar placeholders, mas mantém para leitores de tela */
-        .form-label.visually-hidden {
-            position: absolute !important;
-            width: 1px !important;
-            height: 1px !important;
-            padding: 0 !important;
-            margin: -1px !important;
-            overflow: hidden !important;
-            clip: rect(0, 0, 0, 0) !important;
-            white-space: nowrap !important;
-            border: 0 !important;
-        }
-
-        /* Estilos iOS para Accordion (Leque de Opções) */
-        .ios-accordion-item {
-            background-color: #161b22; /* Fundo do item do accordion */
-            border: 1px solid #30363d; /* Borda entre os itens */
-            border-radius: 8px; /* Cantos arredondados */
-            margin-bottom: 10px; /* Espaçamento entre os itens */
-            overflow: hidden; /* Garante que os cantos arredondados funcionem */
-        }
-        .ios-accordion-item:last-child {
-            margin-bottom: 0; /* Remove margem do último item */
-        }
-
-        .accordion-button {
-            background-color: #161b22 !important; /* Fundo do botão */
-            color: #c9d1d9 !important; /* Cor do texto do botão */
-            border: none !important;
-            padding: 15px 20px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-        .accordion-button:not(.collapsed) {
-            background-color: #21262d !important; /* Fundo quando expandido */
-            color: #58a6ff !important; /* Cor do texto quando expandido */
-            box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
-        }
-        .accordion-button::after {
-            filter: invert(1); /* Inverte a cor da seta do accordion para ser visível */
-        }
-        .accordion-button:focus {
-            border-color: #58a6ff;
-            box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25);
-        }
-
-        .accordion-body {
-            background-color: #21262d; /* Fundo do conteúdo expandido */
-            color: #c9d1d9;
-            padding: 15px 20px;
-            border-top: 1px solid #30363d; /* Borda interna */
-        }
-        .accordion-body a {
-            color: #58a6ff; /* Cor do link do WhatsApp */
-            text-decoration: none;
-        }
-        .accordion-body a:hover {
-            text-decoration: underline;
+            border-top: 1px solid #0f0;
+            background-color: #000;
         }
     </style>
 </head>
@@ -345,9 +199,7 @@
         <header>
             <nav class="navbar navbar-expand-lg mb-3" aria-label="Menu Principal de Navegação">
                 <div class="container-fluid px-0">
-                    <a class="navbar-brand" href="#" aria-label="Página Inicial AllSec TI">
-                        <img src="images/Gemini_Generated_Image_h3yxl8h3yxl8h3yx.png" alt="AllSec TI Logo" class="navbar-logo">
-                    </a>
+                    <a class="navbar-brand text-light" href="#" aria-label="Página Inicial AllSec TI">AllSec TI</a>
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -382,13 +234,13 @@
                 <section class="tab-pane" id="sobre" role="tabpanel" aria-labelledby="sobre-tab">
                     <h2>Sobre a AllSec TI</h2>
                     <p>
-                        A **AllSec TI** é uma empresa especializada em **segurança cibernética corporativa**, com foco em testes de intrusão, auditoria de sistemas, análise de vulnerabilidades e consultoria estratégica em segurança da informação.
+                        A <strong>AllSec TI</strong> é uma empresa especializada em <strong>segurança cibernética corporativa</strong>, com foco em testes de intrusão, auditoria de sistemas, análise de vulnerabilidades e consultoria estratégica em segurança da informação.
                     </p>
                     <p>
                         Inspirada nos pilares da proteção digital e integridade empresarial, a AllSec TI atua com o compromisso de proteger dados, infraestrutura e reputações, oferecendo soluções sob medida para empresas que levam a sério a segurança do seu ambiente tecnológico.
                     </p>
                     <p>
-                        Com uma equipe formada por especialistas certificados e experientes, desenvolvemos projetos com base em **normas internacionais** (ISO/IEC 27001, OWASP, NIST), utilizando as melhores práticas do mercado para garantir **confiabilidade, conformidade e resiliência digital**.
+                        Com uma equipe formada por especialistas certificados e experientes, desenvolvemos projetos com base em <strong>normas internacionais</strong> (ISO/IEC 27001, OWASP, NIST), utilizando as melhores práticas do mercado para garantir <strong>confiabilidade, conformidade e resiliência digital</strong>.
                     </p>
                     <p>
                         Nosso trabalho vai além da identificação de riscos: ajudamos empresas a fortalecer suas defesas, reduzir a superfície de ataque e preparar suas equipes para um cenário cada vez mais ameaçador e sofisticado.
@@ -412,13 +264,13 @@
                 <section class="tab-pane" id="portfolio" role="tabpanel" aria-labelledby="portfolio-tab">
                     <h2>Portfólio</h2>
                     <div class="row" id="portfolio-items">
-                    </div>
+                        </div>
                 </section>
 
                 <section class="tab-pane" id="galeria" role="tabpanel" aria-labelledby="galeria-tab">
                     <h2>Galeria de Trabalhos</h2>
                     <div class="row" id="galeria-items">
-                    </div>
+                        </div>
                 </section>
 
                 <section class="tab-pane" id="sistemas" role="tabpanel" aria-labelledby="sistemas-tab">
@@ -431,89 +283,45 @@
                 <section class="tab-pane" id="contato" role="tabpanel" aria-labelledby="contato-tab">
                     <h2>Contato</h2>
                     <form action="https://formspree.io/f/mgvzwqlr" method="POST" class="needs-validation" novalidate>
-                        <h4 class="mb-3">Envie-nos uma Mensagem</h4>
                         <div class="mb-3">
-                            <label for="nome" class="form-label visually-hidden">Nome</label>
-                            <input type="text" class="form-control ios-input" id="nome" name="nome" placeholder="Seu Nome Completo" required aria-required="true"/>
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome" required aria-required="true"/>
                             <div class="invalid-feedback">Por favor, insira seu nome.</div>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label visually-hidden">Email</label>
-                            <input type="email" class="form-control ios-input" id="email" name="email" placeholder="seu.email@exemplo.com" required aria-required="true"/>
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required aria-required="true"/>
                             <div class="invalid-feedback">Por favor, insira um email válido.</div>
                         </div>
                         <div class="mb-3">
-                            <label for="assunto" class="form-label visually-hidden">Assunto</label>
-                            <input type="text" class="form-control ios-input" id="assunto" name="assunto" placeholder="Assunto da Mensagem (Opcional)" />
-                        </div>
-                        <div class="mb-4">
-                            <label for="mensagem" class="form-label visually-hidden">Mensagem</label>
-                            <textarea class="form-control ios-textarea" id="mensagem" name="mensagem" rows="6" placeholder="Digite sua mensagem aqui..." required aria-required="true"></textarea>
+                            <label for="mensagem" class="form-label">Mensagem</label>
+                            <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required aria-required="true"></textarea>
                             <div class="invalid-feedback">Por favor, digite sua mensagem.</div>
                         </div>
-                        <button type="submit" class="btn btn-success w-100"><i class="fas fa-paper-plane"></i> Enviar Mensagem</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Enviar</button>
                     </form>
 
-                    <hr class="my-5" />
+                    <hr class="my-4" />
 
-                    <h3>Fale com Nossa Equipe</h3>
-                    <div class="accordion accordion-flush" id="contatoAccordion">
-                        <div class="accordion-item ios-accordion-item">
-                            <h2 class="accordion-header" id="headingEder">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEder" aria-expanded="false" aria-controls="collapseEder">
-                                    <i class="fas fa-user-shield me-2"></i> **Eder** - Analista de Segurança da Informação
-                                </button>
-                            </h2>
-                            <div id="collapseEder" class="accordion-collapse collapse" aria-labelledby="headingEder" data-bs-parent="#contatoAccordion">
-                                <div class="accordion-body">
-                                    📞 (34) 9 9110-6738
-                                    <br><i class="fab fa-whatsapp text-success me-1"></i> <a href="https://wa.me/5534991106738" target="_blank" class="text-info">Enviar WhatsApp</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item ios-accordion-item">
-                            <h2 class="accordion-header" id="headingWesley">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWesley" aria-expanded="false" aria-controls="collapseWesley">
-                                    <i class="fas fa-laptop-code me-2"></i> **Wesley** - Engenheiro de Sistemas
-                                </button>
-                            </h2>
-                            <div id="collapseWesley" class="accordion-collapse collapse" aria-labelledby="headingWesley" data-bs-parent="#contatoAccordion">
-                                <div class="accordion-body">
-                                    📞 (44) 9 9112-2199
-                                    <br><i class="fab fa-whatsapp text-success me-1"></i> <a href="https://wa.me/5544991122199" target="_blank" class="text-info">Enviar WhatsApp</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item ios-accordion-item">
-                            <h2 class="accordion-header" id="headingLivia">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLivia" aria-expanded="false" aria-controls="collapseLivia">
-                                    <i class="fas fa-chart-line me-2"></i> **Livia** - Analista de Sistemas
-                                </button>
-                            </h2>
-                            <div id="collapseLivia" class="accordion-collapse collapse" aria-labelledby="headingLivia" data-bs-parent="#contatoAccordion">
-                                <div class="accordion-body">
-                                    📞 (34) 9 9236-2343
-                                    <br><i class="fab fa-whatsapp text-success me-1"></i> <a href="https://wa.me/5534992362343" target="_blank" class="text-info">Enviar WhatsApp</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item ios-accordion-item">
-                            <h2 class="accordion-header" id="headingVitor">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVitor" aria-expanded="false" aria-controls="collapseVitor">
-                                    <i class="fas fa-code me-2"></i> **Vitor** - Analista de Sistemas / Dev
-                                </button>
-                            </h2>
-                            <div id="collapseVitor" class="accordion-collapse collapse" aria-labelledby="headingVitor" data-bs-parent="#contatoAccordion">
-                                <div class="accordion-body">
-                                    📞 (34) 9 9834-1126
-                                    <br><i class="fab fa-whatsapp text-success me-1"></i> <a href="https://wa.me/5534998341126" target="_blank" class="text-info">Enviar WhatsApp</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h3>Nossa Equipe</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Eder</strong> - Analista de Segurança da Informação<br />
+                            📞 (34) 9 9110-6738
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Wesley</strong> - Engenheiro de Sistemas<br />
+                            📞 (44) 9 9112-2199
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Livia</strong> - Analista de Sistemas<br />
+                            📞 (34) 9 9236-2343
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Vitor</strong> - Analista de Sistemas / Dev<br />
+                            📞 (34) 9 9834-1126
+                        </li>
+                    </ul>
                 </section>
             </div>
         </main>
@@ -530,7 +338,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="loginTerminalModalLabel">Login</h5>
+                    <h5 class="modal-title" id="loginTerminalModalLabel">root@kali:~# login</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="modal-body">
@@ -550,7 +358,7 @@
                     <div id="terminal-feedback" class="terminal-line mt-2" style="color: #ff4a4a;"></div>
                 </div>
                 <div class="modal-footer">
-                    <p class="terminal-line mb-0">Terminal</p>
+                    <p class="terminal-line mb-0">root@kali:~# _</p>
                 </div>
             </div>
         </div>
@@ -575,7 +383,7 @@
                 description: "Análise profunda de vulnerabilidades em aplicação e-commerce, resultando na correção de falhas de autenticação e autorização.",
                 image: "https://via.placeholder.com/300x180?text=Auditoria+Web"
             },
-            {
+             {
                 title: "Plano de Resposta a Incidentes",
                 description: "Desenvolvimento e treinamento de um plano de resposta a incidentes cibernéticos, reduzindo o tempo de recuperação em 40%.",
                 image: "https://via.placeholder.com/300x180?text=Resposta+a+Incidentes"
@@ -637,13 +445,9 @@
             const usuario = usuarioInput.value.trim();
             const senha = senhaInput.value.trim();
 
-            // Simulação da "criptografia" com WPA2 (conceitual)
-            console.log(`[WPA2] Tentativa de autenticação para usuário: ${usuario}`);
-            console.log(`[WPA2] Hash (simulado) da senha para verificação.`);
-
             if (usuario === "admin" && senha === "allsec2025") {
-                feedbackDiv.style.color = '#58a6ff'; // Mudar cor para um azul de sucesso
-                feedbackDiv.textContent = 'Autenticação concluída! Conexão segura [WPA2].';
+                feedbackDiv.style.color = '#0f0';
+                feedbackDiv.textContent = 'Login successful! Access granted.';
                 loggedIn = true; // Define o estado de login como verdadeiro
 
                 // Esconde o modal após um pequeno atraso para a mensagem ser lida
@@ -658,7 +462,7 @@
 
             } else {
                 feedbackDiv.style.color = '#ff4a4a';
-                feedbackDiv.textContent = 'Falha na autenticação. Credenciais inválidas [WPA2_ERROR].';
+                feedbackDiv.textContent = 'Authentication failed. Incorrect username or password.';
                 usuarioInput.value = ''; // Limpa os campos em caso de erro
                 senhaInput.value = '';
                 usuarioInput.focus(); // Foca no campo de usuário para nova tentativa
@@ -714,6 +518,7 @@
             })
         })()
 
+
         // Carrega a aba correta ao carregar a página
         window.onload = () => {
             const abaInicial = window.location.hash.replace('#', '') || 'home';
@@ -722,7 +527,13 @@
             } else {
                 mostrarAba('home'); // Redireciona para home se a hash for inválida
             }
-        }
+        };
+
+        // Event listener para quando o modal de login é aberto
+        document.getElementById('loginTerminalModal').addEventListener('shown.bs.modal', function () {
+            document.getElementById('terminal-usuario').focus(); // Foca no campo de usuário ao abrir
+            document.getElementById('terminal-feedback').textContent = ''; // Limpa feedback anterior
+        });
     </script>
 </body>
 </html>
