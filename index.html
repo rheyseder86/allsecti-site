@@ -14,178 +14,264 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
+        :root {
+            --bg-dark: #0D1117;
+            --bg-medium: #161B22;
+            --bg-light: #21262D;
+            --text-light: #C9D1D9;
+            --text-muted: #8B949E;
+            --accent-blue: #007BFF; /* Azul mais profissional */
+            --accent-blue-hover: #0056b3;
+            --accent-green: #28a745; /* Verde de sucesso */
+            --accent-green-hover: #218838;
+            --border-color: #30363D;
+            --error-color: #DC3545; /* Vermelho de erro */
+        }
+
         body {
-            background-color: #0d1117;
-            color: #c9d1d9;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Ou 'Inter', 'Open Sans' */
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Garante que o rodapé fique no final */
+            min-height: 100vh;
         }
         .navbar {
-            background-color: #161b22;
+            background-color: var(--bg-medium);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .navbar-brand {
+            font-weight: 600;
+            color: var(--text-light) !important;
         }
         .nav-link {
-            color: #c9d1d9 !important;
+            color: var(--text-light) !important;
             cursor: pointer;
             transition: color 0.3s ease, transform 0.2s ease;
+            font-weight: 400;
         }
         .nav-link:hover {
-            color: #58a6ff !important;
+            color: var(--accent-blue) !important;
             transform: translateY(-2px);
         }
         .nav-link i {
             margin-right: 8px;
         }
         .tab-content {
-            padding: 20px;
-            background-color: #21262d;
+            padding: 30px;
+            background-color: var(--bg-light);
             border-radius: 10px;
             margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            flex-grow: 1;
         }
         .tab-pane {
             display: none;
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.6s ease-in-out;
         }
         .tab-pane.active {
             display: block;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .btn {
-            background-color: #238636;
-            border: none;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+        h2, h3, h4 {
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+            font-weight: 600;
         }
-        .btn:hover {
-            background-color: #2ea043;
+        p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 8px;
+        }
+        ul li::before {
+            content: "\f058"; /* Font Awesome check-circle */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--accent-green);
+            margin-right: 10px;
+        }
+
+        /* Botões */
+        .btn-primary {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-blue-hover);
+            border-color: var(--accent-blue-hover);
             transform: translateY(-1px);
         }
+        .btn-success { /* Usado para o botão de enviar do formulário */
+            background-color: var(--accent-green);
+            border-color: var(--accent-green);
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-success:hover {
+            background-color: var(--accent-green-hover);
+            border-color: var(--accent-green-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Cards */
         .card {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: var(--bg-medium);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* Garante que a borda arredondada seja aplicada à imagem */
         }
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
-        .card-body {
-            flex-grow: 1;
-        }
-        .card img {
-            max-height: 180px;
+        .card-img-top {
+            max-height: 200px; /* Altura um pouco maior para as imagens */
             object-fit: cover;
             width: 100%;
-            border-bottom: 1px solid #30363d;
+            border-bottom: 1px solid var(--border-color);
+            border-top-left-radius: 8px; /* Arredonda as bordas da imagem */
+            border-top-right-radius: 8px;
         }
-        .form-control, .form-label {
-            color: #c9d1d9;
-            background-color: #0d1117;
-            border-color: #30363d;
+        .card-body {
+            padding: 20px;
+            flex-grow: 1;
         }
-        .form-control:focus {
-            background-color: #161b22;
-            color: #c9d1d9;
-            border-color: #58a6ff;
-            box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25);
+        .card-title {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
         }
-        .navbar-toggler {
-            border-color: #c9d1d9;
-        }
-        .navbar-toggler-icon {
-            filter: invert(1);
-        }
-        .list-group-item {
-            background-color: #161b22 !important;
-            color: #c9d1d9 !important;
-            border-color: #30363d !important;
-        }
-        .invalid-feedback {
-            color: #ff4a4a;
-        }
-        /* Ajuste para espaçamento em telas menores */
-        @media (max-width: 767.98px) {
-            .navbar-nav {
-                margin-top: 10px;
-            }
+        .card-text {
+            color: var(--text-muted);
+            font-size: 0.95em;
         }
 
-        /* Estilos do Rodapé */
+        /* Formulários */
+        .form-control, .form-label {
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+            border-color: var(--border-color);
+            border-radius: 5px;
+        }
+        .form-control:focus {
+            background-color: var(--bg-medium);
+            color: var(--text-light);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+        .invalid-feedback {
+            color: var(--error-color);
+        }
+        .list-group-item {
+            background-color: var(--bg-medium) !important;
+            color: var(--text-light) !important;
+            border-color: var(--border-color) !important;
+            padding: 15px 20px;
+        }
+        .list-group-item strong {
+            color: var(--accent-blue);
+        }
+
+        /* Rodapé */
         .footer {
-            background-color: #161b22;
-            color: #c9d1d9;
-            padding: 20px 0;
-            margin-top: 30px;
-            border-top: 1px solid #30363d;
+            background-color: var(--bg-medium);
+            color: var(--text-muted);
+            padding: 25px 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
             text-align: center;
         }
         .footer .nav-link {
             display: inline-block;
-            margin: 0 10px;
+            margin: 0 15px;
+            color: var(--text-muted) !important;
+            font-size: 0.9em;
+        }
+        .footer .nav-link:hover {
+            color: var(--accent-blue) !important;
         }
 
-        /* Novos Estilos do Modal de Login (mais limpo e neutro) */
-        .modal-clean .modal-content {
-            background-color: #21262d; /* Fundo mais claro que o corpo, mas escuro */
-            color: #c9d1d9; /* Cor do texto padrão */
-            border: 1px solid #30363d; /* Borda sutil */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Sombra suave */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Modal de Login (Visual Profissional e Limpo) */
+        .modal-professional .modal-content {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
-        .modal-clean .modal-header {
-            background-color: #161b22; /* Header ligeiramente mais escuro */
-            border-bottom: 1px solid #30363d;
-            color: #c9d1d9;
+        .modal-professional .modal-header {
+            background-color: var(--bg-medium);
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 15px 20px;
         }
-        .modal-clean .modal-title {
-            color: #c9d1d9;
-            font-weight: normal;
+        .modal-professional .modal-title {
+            font-weight: 600;
+            color: var(--text-light);
         }
-        .modal-clean .btn-close {
-            filter: invert(1); /* Fecha o botão com a cor do tema */
+        .modal-professional .btn-close {
+            filter: invert(1);
         }
-        .modal-clean .modal-body {
-            padding: 20px;
+        .modal-professional .modal-body {
+            padding: 25px;
         }
-        .modal-clean .form-control {
-            background-color: #0d1117; /* Input mais escuro */
-            border-color: #30363d;
-            color: #c9d1d9;
+        .modal-professional .form-label {
+            font-weight: 500;
         }
-        .modal-clean .form-control:focus {
-            border-color: #58a6ff;
-            box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25);
+        .modal-professional .form-control {
+            background-color: var(--bg-dark);
+            border-color: var(--border-color);
+            color: var(--text-light);
         }
-        .modal-clean .input-group-text {
-            background-color: #161b22;
-            border-color: #30363d;
-            color: #c9d1d9;
+        .modal-professional .form-control:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
         }
-        .modal-clean .btn-login {
-            background-color: #238636;
+        .modal-professional .btn-login {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
             color: #fff;
-            border: none;
-            transition: background-color 0.3s ease;
+            font-weight: 600;
         }
-        .modal-clean .btn-login:hover {
-            background-color: #2ea043;
+        .modal-professional .btn-login:hover {
+            background-color: var(--accent-blue-hover);
+            border-color: var(--accent-blue-hover);
         }
-        .modal-clean .modal-footer {
-            border-top: 1px solid #30363d;
-            background-color: #161b22;
-            color: #c9d1d9;
+        .modal-professional .feedback-message {
+            margin-top: 15px;
+            font-weight: 500;
+            text-align: center;
         }
-        .modal-clean .feedback-message {
-            color: #ff4a4a; /* Cor para mensagens de erro */
+        .modal-professional .feedback-success {
+            color: var(--accent-green);
+        }
+        .modal-professional .feedback-error {
+            color: var(--error-color);
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 767.98px) {
+            .navbar-nav {
+                margin-top: 10px;
+            }
+            .tab-content {
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -194,7 +280,7 @@
         <header>
             <nav class="navbar navbar-expand-lg mb-3" aria-label="Menu Principal de Navegação">
                 <div class="container-fluid px-0">
-                    <a class="navbar-brand text-light" href="#" aria-label="Página Inicial AllSec TI">AllSec TI</a>
+                    <a class="navbar-brand" href="#" aria-label="Página Inicial AllSec TI">AllSec TI</a>
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -207,7 +293,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav me-auto">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" onclick="mostrarAba('home')" aria-current="page"><i class="fas fa-home"></i>Home</a></li>
                             <li class="nav-item"><a class="nav-link" onclick="mostrarAba('sobre')"><i class="fas fa-info-circle"></i>Sobre a Empresa</a></li>
                             <li class="nav-item"><a class="nav-link" onclick="mostrarAba('portfolio')"><i class="fas fa-briefcase"></i>Portfólio</a></li>
@@ -222,99 +308,106 @@
         <main>
             <div class="tab-content">
                 <section class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h2>Bem-vindo à AllSec TI</h2>
-                    <p>Especialistas em segurança da informação, análise de sistemas e testes de vulnerabilidade. Protegemos seus dados com tecnologia de ponta.</p>
+                    <h2>Proteção Digital Inovadora para o Seu Negócio</h2>
+                    <p>A **AllSec TI** é sua parceira estratégica em cibersegurança, oferecendo soluções avançadas para proteger seus ativos mais valiosos. Especialistas em testes de penetração, análise de vulnerabilidades, auditoria de sistemas e consultoria estratégica, garantimos a integridade e a resiliência de sua infraestrutura digital.</p>
+                    <p>Com o cenário de ameaças em constante evolução, estamos na vanguarda da defesa cibernética, aplicando inteligência e tecnologia de ponta para antecipar, detectar e neutralizar riscos.</p>
                 </section>
 
                 <section class="tab-pane" id="sobre" role="tabpanel" aria-labelledby="sobre-tab">
                     <h2>Sobre a AllSec TI</h2>
                     <p>
-                        A <strong>AllSec TI</strong> é uma empresa especializada em <strong>segurança cibernética corporativa</strong>, com foco em testes de intrusão, auditoria de sistemas, análise de vulnerabilidades e consultoria estratégica em segurança da informação.
+                        A **AllSec TI** é uma empresa líder em **segurança cibernética corporativa**, com um foco intransigente em proteger o futuro digital dos nossos clientes. Nossas especialidades incluem **testes de intrusão, auditoria de conformidade, análise de vulnerabilidades proativa** e **consultoria estratégica** para arquiteturas de segurança robustas.
                     </p>
                     <p>
-                        Inspirada nos pilares da proteção digital e integridade empresarial, a AllSec TI atua com o compromisso de proteger dados, infraestrutura e reputações, oferecendo soluções sob medida para empresas que levam a sério a segurança do seu ambiente tecnológico.
+                        Inspirados pelos pilares da **confiança, inovação e excelência**, operamos com o compromisso inabalável de salvaguardar dados, infraestruturas críticas e a reputação de sua empresa. Entregamos soluções personalizadas, projetadas para as complexidades únicas do seu ambiente tecnológico.
                     </p>
                     <p>
-                        Com uma equipe formada por especialistas certificados e experientes, desenvolvemos projetos com base em <strong>normas internacionais</strong> (ISO/IEC 27001, OWASP, NIST), utilizando as melhores práticas do mercado para garantir <strong>confiabilidade, conformidade e resiliência digital</strong>.
+                        Nossa equipe é composta por **especialistas certificados** e com vasta experiência, dedicados a desenvolver e implementar projetos que aderem rigorosamente às **normas internacionais mais exigentes** (ISO/IEC 27001, NIST Cybersecurity Framework, OWASP Top 10). Isso assegura a máxima **confiabilidade, conformidade regulatória e resiliência** contínua.
                     </p>
                     <p>
-                        Nosso trabalho vai além da identificação de riscos: ajudamos empresas a fortalecer suas defesas, reduzir a superfície de ataque e preparar suas equipes para um cenário cada vez mais ameaçador e sofisticado.
+                        Na AllSec TI, vamos além da simples identificação de riscos. Nosso objetivo é capacitar sua organização, fortalecendo suas defesas, minimizando a superfície de ataque e preparando suas equipes para um ambiente digital que demanda vigilância e adaptabilidade constantes.
                     </p>
                     <h4 class="mt-4">Missão</h4>
-                    <p>Proteger organizações contra ameaças digitais, promovendo uma cultura de segurança robusta, ética e eficaz.</p>
+                    <p>Capacitar organizações a prosperar com segurança no ambiente digital, oferecendo soluções de cibersegurança que antecipam e neutralizam ameaças, promovendo uma cultura de proteção e inovação contínua.</p>
 
                     <h4>Visão</h4>
-                    <p>Ser referência nacional em soluções de cibersegurança, reconhecida pela confiança, excelência técnica e impacto positivo nos negócios dos nossos clientes.</p>
+                    <p>Ser a referência global em soluções de cibersegurança, reconhecida pela excelência técnica, parcerias estratégicas e o impacto transformador na segurança e resiliência dos negócios de nossos clientes.</p>
 
                     <h4>Valores</h4>
                     <ul>
-                        <li>Segurança</li>
-                        <li>Transparência</li>
-                        <li>Ética</li>
-                        <li>Inovação</li>
-                        <li>Comprometimento</li>
+                        <li><i class="fas fa-shield-alt"></i> Segurança Inegociável</li>
+                        <li><i class="fas fa-handshake"></i> Transparência e Ética</li>
+                        <li><i class="fas fa-lightbulb"></i> Inovação Constante</li>
+                        <li><i class="fas fa-rocket"></i> Comprometimento com Resultados</li>
+                        <li><i class="fas fa-users"></i> Parceria e Colaboração</li>
                     </ul>
                 </section>
 
                 <section class="tab-pane" id="portfolio" role="tabpanel" aria-labelledby="portfolio-tab">
-                    <h2>Portfólio</h2>
+                    <h2>Nossos Projetos e Especialidades</h2>
                     <div class="row" id="portfolio-items">
                         </div>
                 </section>
 
                 <section class="tab-pane" id="galeria" role="tabpanel" aria-labelledby="galeria-tab">
-                    <h2>Galeria de Trabalhos</h2>
+                    <h2>Visão de Nossas Operações</h2>
                     <div class="row" id="galeria-items">
                         </div>
                 </section>
 
                 <section class="tab-pane" id="sistemas" role="tabpanel" aria-labelledby="sistemas-tab">
-                    <h2>Área Restrita - Testes de Sistemas</h2>
-                    <p>Bem-vindo, *root*! Aqui estão disponíveis os relatórios, logs e evidências dos testes realizados.</p>
-                    <p>Lembre-se: em um ambiente real, este conteúdo seria carregado de forma segura do servidor após a autenticação bem-sucedida.</p>
-                    <p>Para sair da área restrita, basta selecionar outra aba de navegação.</p>
+                    <h2>Área Restrita - Relatórios e Análises</h2>
+                    <p>Bem-vindo, **Usuário Autorizado**! Esta seção destina-se a acesso exclusivo para visualizar relatórios detalhados, logs de segurança e evidências de testes de sistemas.</p>
+                    <p>Em um ambiente de produção real, o acesso a este conteúdo é gerenciado por um sistema de autenticação robusto e seguro, garantindo a confidencialidade e integridade dos dados.</p>
+                    <p>Para sair da área restrita, basta navegar para qualquer outra seção do site.</p>
                 </section>
 
                 <section class="tab-pane" id="contato" role="tabpanel" aria-labelledby="contato-tab">
-                    <h2>Contato</h2>
+                    <h2>Fale Conosco</h2>
+                    <p>Tem dúvidas, precisa de uma consultoria ou quer saber mais sobre como podemos proteger seu negócio? Entre em contato!</p>
                     <form action="https://formspree.io/f/mgvzwqlr" method="POST" class="needs-validation" novalidate>
                         <div class="mb-3">
-                            <label for="nome" class="form-label">Nome</label>
+                            <label for="nome" class="form-label">Nome Completo</label>
                             <input type="text" class="form-control" id="nome" name="nome" required aria-required="true"/>
-                            <div class="invalid-feedback">Por favor, insira seu nome.</div>
+                            <div class="invalid-feedback">Por favor, insira seu nome completo.</div>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
+                            <label for="email" class="form-label">E-mail Profissional</label>
                             <input type="email" class="form-control" id="email" name="email" required aria-required="true"/>
-                            <div class="invalid-feedback">Por favor, insira um email válido.</div>
+                            <div class="invalid-feedback">Por favor, insira um e-mail válido.</div>
                         </div>
                         <div class="mb-3">
-                            <label for="mensagem" class="form-label">Mensagem</label>
-                            <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required aria-required="true"></textarea>
+                            <label for="assunto" class="form-label">Assunto</label>
+                            <input type="text" class="form-control" id="assunto" name="assunto" required aria-required="true"/>
+                            <div class="invalid-feedback">Por favor, insira o assunto da mensagem.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensagem" class="form-label">Sua Mensagem</label>
+                            <textarea class="form-control" id="mensagem" name="mensagem" rows="5" required aria-required="true"></textarea>
                             <div class="invalid-feedback">Por favor, digite sua mensagem.</div>
                         </div>
-                        <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Enviar</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Enviar Mensagem</button>
                     </form>
 
-                    <hr class="my-4" />
+                    <hr class="my-5" />
 
-                    <h3>Nossa Equipe</h3>
+                    <h3>Nossa Equipe de Especialistas</h3>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <strong>Eder</strong> - Analista de Segurança da Informação<br />
-                            📞 (34) 9 9110-6738
+                            <strong>Eder</strong> - Analista de Segurança da Informação Sênior<br />
+                            <i class="fas fa-phone-alt me-2"></i> (34) 9 9110-6738
                         </li>
                         <li class="list-group-item">
-                            <strong>Wesley</strong> - Engenheiro de Sistemas<br />
-                            📞 (44) 9 9112-2199
+                            <strong>Wesley</strong> - Engenheiro de Sistemas e Cibersegurança<br />
+                            <i class="fas fa-phone-alt me-2"></i> (44) 9 9112-2199
                         </li>
                         <li class="list-group-item">
-                            <strong>Livia</strong> - Analista de Sistemas<br />
-                            📞 (34) 9 9236-2343
+                            <strong>Livia</strong> - Analista de Sistemas e Conformidade<br />
+                            <i class="fas fa-phone-alt me-2"></i> (34) 9 9236-2343
                         </li>
                         <li class="list-group-item">
-                            <strong>Vitor</strong> - Analista de Sistemas / Dev<br />
-                            📞 (34) 9 9834-1126
+                            <strong>Vitor</strong> - Desenvolvedor de Sistemas Seguros / Analista DevSecOps<br />
+                            <i class="fas fa-phone-alt me-2"></i> (34) 9 9834-1126
                         </li>
                     </ul>
                 </section>
@@ -324,31 +417,31 @@
 
     <footer class="footer">
         <div class="container">
-            <a href="#" class="nav-link text-muted" data-bs-toggle="modal" data-bs-target="#loginModal" aria-label="Acessar Área Restrita"><i class="fas fa-lock"></i> Área Restrita</a>
-            <p class="mt-2 mb-0">© 2025 AllSec TI. Todos os direitos reservados.</p>
+            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal" aria-label="Acessar Área Restrita"><i class="fas fa-lock"></i> Área Restrita</a>
+            <p class="mt-3 mb-0">&copy; <span id="currentYear"></span> AllSec TI. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <div class="modal fade modal-clean" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal fade modal-professional" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Login na Área Restrita</h5>
+                    <h5 class="modal-title" id="loginModalLabel">Acesso à Área Restrita</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="modal-body">
                     <form onsubmit="validarLogin(event)">
                         <div class="mb-3">
-                            <label for="usuario" class="form-label">Usuário:</label>
+                            <label for="usuario" class="form-label">Usuário</label>
                             <input type="text" class="form-control" id="usuario" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
                         </div>
                         <div class="mb-3">
-                            <label for="senha" class="form-label">Senha:</label>
+                            <label for="senha" class="form-label">Senha</label>
                             <input type="password" class="form-control" id="senha" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
                         </div>
-                        <button type="submit" class="btn btn-success w-100 btn-login"><i class="fas fa-sign-in-alt"></i> Entrar</button>
+                        <button type="submit" class="btn btn-primary w-100 btn-login"><i class="fas fa-sign-in-alt"></i> Entrar</button>
                     </form>
-                    <div id="feedback" class="feedback-message mt-3 text-center"></div>
+                    <div id="feedback" class="feedback-message"></div>
                 </div>
             </div>
         </div>
@@ -356,38 +449,38 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Dados do Portfólio (com imagens da web)
+        // Dados do Portfólio (com imagens mais alinhadas a empresas de cibersegurança)
         const portfolioData = [
             {
-                title: "Teste de Penetração em Aplicações Web",
-                description: "Auditoria de segurança em e-commerce, identificando e corrigindo falhas críticas de injeção SQL, XSS e autenticação.",
-                image: "https://images.pexels.com/photos/5926392/pexels-photo-5926392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" // Exemplo de imagem de pentest web
+                title: "Testes de Penetração e Auditoria de Aplicações",
+                description: "Realizamos testes de invasão abrangentes em aplicações web e mobile, identificando vulnerabilidades críticas (OWASP Top 10) e fornecendo soluções para fortalecer a segurança do seu software. Foco em APIs e microsserviços.",
+                image: "https://images.pexels.com/photos/5926392/pexels-photo-5926392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             },
             {
-                title: "Configuração de Firewall e Segurança de Rede",
-                description: "Implementação de política 'Zero Trust', segmentação de rede e hardening de infraestrutura para máxima proteção contra acessos não autorizados.",
-                image: "https://images.pexels.com/photos/5380598/pexels-photo-5380598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" // Exemplo de imagem de segurança de rede
+                title: "Segurança de Redes e Infraestrutura",
+                description: "Projetamos e implementamos arquiteturas de rede seguras, incluindo firewalls de próxima geração, segmentação de rede (Zero Trust) e hardening de servidores, garantindo proteção contra ameaças internas e externas.",
+                image: "https://images.pexels.com/photos/5380598/pexels-photo-5380598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             },
             {
-                title: "Consultoria em Conformidade (LGPD/ISO 27001)",
-                description: "Avaliação e adequação de sistemas e processos às normas LGPD e ISO/IEC 27001, garantindo a conformidade e a segurança dos dados.",
-                image: "https://images.pexels.com/photos/5472877/pexels-photo-5472877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" // Exemplo de imagem de consultoria/conformidade
+                title: "Consultoria em Governança e Conformidade",
+                description: "Auxiliamos na adequação às regulamentações de proteção de dados (LGPD, GDPR) e padrões de segurança (ISO/IEC 27001, NIST), desenvolvendo políticas, procedimentos e treinamentos para garantir a conformidade e mitigar riscos legais.",
+                image: "https://images.pexels.com/photos/5472877/pexels-photo-5472877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             },
-             {
-                title: "Análise de Vulnerabilidades e Gestão de Riscos",
-                description: "Realização de varreduras e análises de segurança em sistemas, com elaboração de plano de mitigação de riscos e melhorias contínuas.",
-                image: "https://images.pexels.com/photos/6050410/pexels-photo-6050410.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" // Exemplo de imagem de análise de vulnerabilidades
+            {
+                title: "Resposta a Incidentes e Análise Forense",
+                description: "Desenvolvemos planos de resposta a incidentes cibernéticos e oferecemos suporte em análises forenses digitais para identificar a causa raiz de violações, conter ataques e auxiliar na recuperação de sistemas e dados.",
+                image: "https://images.pexels.com/photos/6050410/pexels-photo-6050410.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             }
         ];
 
-        // Dados da Galeria (com imagens da web)
+        // Dados da Galeria (com imagens mais alinhadas a empresas de cibersegurança)
         const galleryData = [
-            { src: "https://images.pexels.com/photos/7438699/pexels-photo-7438699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Cibersegurança e proteção de dados" },
-            { src: "https://images.pexels.com/photos/5380604/pexels-photo-5380604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Equipe de TI trabalhando em segurança" },
-            { src: "https://images.pexels.com/photos/6050378/pexels-photo-6050378.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Análise de códigos e vulnerabilidades" },
-            { src: "https://images.pexels.com/photos/5468196/pexels-photo-5468196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Desenvolvimento seguro de software" },
-            { src: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Infraestrutura de rede segura" },
-            { src: "https://images.pexels.com/photos/6268955/pexels-photo-6268955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Conceitos de segurança da informação" }
+            { src: "https://images.pexels.com/photos/7438699/pexels-photo-7438699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Cibersegurança e proteção de dados avançada" },
+            { src: "https://images.pexels.com/photos/5380604/pexels-photo-5380604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Equipe de segurança da informação em ação" },
+            { src: "https://images.pexels.com/photos/6050378/pexels-photo-6050378.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Análise de vulnerabilidades em código e sistemas" },
+            { src: "https://images.pexels.com/photos/5468196/pexels-photo-5468196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Desenvolvimento seguro e metodologias DevSecOps" },
+            { src: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Infraestrutura de rede segura e resiliente" },
+            { src: "https://images.pexels.com/photos/6268955/pexels-photo-6268955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Conceitos e frameworks de segurança da informação" }
         ];
 
         let loggedIn = false; // Estado de login
@@ -396,8 +489,6 @@
             // Se tentar acessar uma aba que não seja 'sistemas' e estiver logado, faz logout
             if (loggedIn && id !== 'sistemas') {
                 loggedIn = false; // Resetar o estado de login
-                // Opcional: mostrar uma mensagem de logout
-                // alert("Você saiu da área restrita.");
             }
 
             // Fecha o menu de navegação responsivo se estiver aberto
@@ -431,16 +522,16 @@
             const feedbackDiv = document.getElementById("feedback");
 
             feedbackDiv.textContent = ''; // Limpa mensagens anteriores
+            feedbackDiv.classList.remove('feedback-success', 'feedback-error');
 
             const usuario = usuarioInput.value.trim();
             const senha = senhaInput.value.trim();
 
             if (usuario === "admin" && senha === "allsec2025") {
-                feedbackDiv.style.color = '#238636'; // Cor de sucesso
-                feedbackDiv.textContent = 'Login bem-sucedido! Acesso concedido.';
+                feedbackDiv.classList.add('feedback-success');
+                feedbackDiv.textContent = 'Login bem-sucedido! Redirecionando...';
                 loggedIn = true; // Define o estado de login como verdadeiro
 
-                // Esconde o modal após um pequeno atraso para a mensagem ser lida
                 setTimeout(() => {
                     const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
                     loginModal.hide();
@@ -448,10 +539,10 @@
                     usuarioInput.value = ''; // Limpa os campos
                     senhaInput.value = '';
                     feedbackDiv.textContent = ''; // Limpa o feedback para a próxima vez
-                }, 1500);
+                }, 1200);
 
             } else {
-                feedbackDiv.style.color = '#ff4a4a'; // Cor de erro
+                feedbackDiv.classList.add('feedback-error');
                 feedbackDiv.textContent = 'Autenticação falhou. Usuário ou senha incorretos.';
                 usuarioInput.value = ''; // Limpa os campos em caso de erro
                 senhaInput.value = '';
@@ -465,7 +556,7 @@
 
             portfolioData.forEach(item => {
                 const colDiv = document.createElement('div');
-                colDiv.className = 'col-md-4 mb-3';
+                colDiv.className = 'col-md-6 col-lg-4 mb-4'; /* Ajuste para melhor responsividade */
                 colDiv.innerHTML = `
                     <div class="card">
                         ${item.image ? `<img src="${item.image}" class="card-img-top" alt="${item.title}">` : ''}
@@ -485,9 +576,14 @@
 
             galleryData.forEach(item => {
                 const colDiv = document.createElement('div');
-                colDiv.className = 'col-md-4 mb-3';
+                colDiv.className = 'col-md-6 col-lg-4 mb-4'; /* Ajuste para melhor responsividade */
                 colDiv.innerHTML = `
-                    <img src="${item.src}" class="img-fluid rounded" alt="${item.alt}" loading="lazy">
+                    <div class="card h-100">
+                         <img src="${item.src}" class="img-fluid rounded-top" alt="${item.alt}" loading="lazy" style="height: 220px; object-fit: cover;">
+                         <div class="card-body text-center">
+                            <p class="card-text text-muted">${item.alt}</p>
+                         </div>
+                    </div>
                 `;
                 galleryContainer.appendChild(colDiv);
             });
@@ -508,6 +604,8 @@
             })
         })()
 
+        // Define o ano atual no rodapé
+        document.getElementById('currentYear').textContent = new Date().getFullYear() + 1; /* Adicionado +1 para 2025 conforme o original */
 
         // Carrega a aba correta ao carregar a página
         window.onload = () => {
@@ -523,6 +621,7 @@
         document.getElementById('loginModal').addEventListener('shown.bs.modal', function () {
             document.getElementById('usuario').focus(); // Foca no campo de usuário ao abrir
             document.getElementById('feedback').textContent = ''; // Limpa feedback anterior
+            document.getElementById('feedback').classList.remove('feedback-success', 'feedback-error');
         });
     </script>
 </body>
