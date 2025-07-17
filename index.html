@@ -14,60 +14,66 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
+        /* Variáveis CSS para Cores e Estilos */
         :root {
-            --bg-dark: #0D1117;
-            --bg-medium: #161B22;
-            --bg-light: #21262D;
-            --text-light: #C9D1D9;
-            --text-muted: #8B949E;
-            --accent-blue: #007BFF; /* Azul mais profissional */
-            --accent-blue-hover: #0056b3;
-            --accent-green: #28a745; /* Verde de sucesso */
-            --accent-green-hover: #218838;
-            --border-color: #30363D;
-            --error-color: #DC3545; /* Vermelho de erro */
+            --bg-dark: #0D1117; /* Fundo principal */
+            --bg-medium: #161B22; /* Fundo de componentes como navbar, cards */
+            --bg-light: #21262D; /* Fundo do conteúdo principal */
+            --text-light: #C9D1D9; /* Cor do texto claro */
+            --text-muted: #8B949E; /* Cor do texto secundário/neutro */
+            --accent-blue: #007BFF; /* Azul principal para destaques */
+            --accent-blue-hover: #0056b3; /* Azul ao passar o mouse */
+            --accent-green: #28a745; /* Verde para sucesso/ícones */
+            --accent-green-hover: #218838; /* Verde ao passar o mouse */
+            --border-color: #30363D; /* Cor de bordas e divisores */
+            --error-color: #DC3545; /* Vermelho para mensagens de erro */
         }
 
+        /* Estilos Gerais do Corpo */
         body {
             background-color: var(--bg-dark);
             color: var(--text-light);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Ou 'Inter', 'Open Sans' */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte padrão, similar a sistemas operacionais */
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            min-height: 100vh; /* Garante que o rodapé fique sempre na parte inferior */
         }
+
+        /* Navbar */
         .navbar {
             background-color: var(--bg-medium);
             border-bottom: 1px solid var(--border-color);
         }
         .navbar-brand {
-            font-weight: 600;
+            font-weight: 600; /* Negrito para o nome da marca */
             color: var(--text-light) !important;
         }
         .nav-link {
             color: var(--text-light) !important;
             cursor: pointer;
-            transition: color 0.3s ease, transform 0.2s ease;
+            transition: color 0.3s ease, transform 0.2s ease; /* Transições suaves para interatividade */
             font-weight: 400;
         }
         .nav-link:hover {
             color: var(--accent-blue) !important;
-            transform: translateY(-2px);
+            transform: translateY(-2px); /* Efeito de "levantar" ao passar o mouse */
         }
         .nav-link i {
-            margin-right: 8px;
+            margin-right: 8px; /* Espaço entre o ícone e o texto do link */
         }
+
+        /* Conteúdo das Abas (Sections) */
         .tab-content {
             padding: 30px;
             background-color: var(--bg-light);
             border-radius: 10px;
             margin-top: 20px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-            flex-grow: 1;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra suave para profundidade */
+            flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
         }
         .tab-pane {
             display: none;
-            animation: fadeIn 0.6s ease-in-out;
+            animation: fadeIn 0.6s ease-in-out; /* Animação de fade-in */
         }
         .tab-pane.active {
             display: block;
@@ -76,31 +82,33 @@
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Títulos */
         h2, h3, h4 {
-            color: var(--accent-blue);
+            color: var(--accent-blue); /* Cor azul para os títulos */
             margin-bottom: 20px;
             font-weight: 600;
         }
         p {
-            line-height: 1.7;
+            line-height: 1.7; /* Espaçamento de linha para melhor leitura */
             margin-bottom: 15px;
         }
         ul {
-            list-style: none;
+            list-style: none; /* Remove o estilo padrão da lista */
             padding-left: 0;
         }
         ul li {
             margin-bottom: 8px;
         }
         ul li::before {
-            content: "\f058"; /* Font Awesome check-circle */
+            content: "\f058"; /* Ícone de check do Font Awesome para itens de lista */
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
             color: var(--accent-green);
             margin-right: 10px;
         }
 
-        /* Botões */
+        /* Estilo dos Botões */
         .btn-primary {
             background-color: var(--accent-blue);
             border-color: var(--accent-blue);
@@ -111,7 +119,7 @@
             border-color: var(--accent-blue-hover);
             transform: translateY(-1px);
         }
-        .btn-success { /* Usado para o botão de enviar do formulário */
+        .btn-success { /* Usado para o botão de envio do formulário de contato */
             background-color: var(--accent-green);
             border-color: var(--accent-green);
             transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
@@ -122,13 +130,13 @@
             transform: translateY(-1px);
         }
 
-        /* Cards */
+        /* Estilo dos Cards (Portfólio e Galeria) */
         .card {
             background-color: var(--bg-medium);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            height: 100%;
+            height: 100%; /* Garante que os cards tenham a mesma altura */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -136,15 +144,15 @@
             overflow: hidden; /* Garante que a borda arredondada seja aplicada à imagem */
         }
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-8px); /* Efeito de "levantar" mais pronunciado */
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
         .card-img-top {
-            max-height: 200px; /* Altura um pouco maior para as imagens */
-            object-fit: cover;
+            max-height: 200px; /* Altura máxima das imagens no topo do card */
+            object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
             width: 100%;
             border-bottom: 1px solid var(--border-color);
-            border-top-left-radius: 8px; /* Arredonda as bordas da imagem */
+            border-top-left-radius: 8px; /* Arredonda as bordas superiores da imagem */
             border-top-right-radius: 8px;
         }
         .card-body {
@@ -161,7 +169,7 @@
             font-size: 0.95em;
         }
 
-        /* Formulários */
+        /* Estilo dos Formulários */
         .form-control, .form-label {
             color: var(--text-light);
             background-color: var(--bg-dark);
@@ -172,10 +180,10 @@
             background-color: var(--bg-medium);
             color: var(--text-light);
             border-color: var(--accent-blue);
-            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); /* Sombra de foco azul */
         }
         .invalid-feedback {
-            color: var(--error-color);
+            color: var(--error-color); /* Cor de erro para validação */
         }
         .list-group-item {
             background-color: var(--bg-medium) !important;
@@ -225,7 +233,7 @@
             color: var(--text-light);
         }
         .modal-professional .btn-close {
-            filter: invert(1);
+            filter: invert(1); /* Inverte a cor do 'X' do botão de fechar para contraste */
         }
         .modal-professional .modal-body {
             padding: 25px;
@@ -264,7 +272,7 @@
             color: var(--error-color);
         }
 
-        /* Ajustes responsivos */
+        /* Ajustes Responsivos para Telas Menores */
         @media (max-width: 767.98px) {
             .navbar-nav {
                 margin-top: 10px;
@@ -449,31 +457,31 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Dados do Portfólio (com imagens mais alinhadas a empresas de cibersegurança)
+        // Dados do Portfólio (com imagens correspondentes e licenciadas/mockup)
         const portfolioData = [
             {
                 title: "Testes de Penetração e Auditoria de Aplicações",
                 description: "Realizamos testes de invasão abrangentes em aplicações web e mobile, identificando vulnerabilidades críticas (OWASP Top 10) e fornecendo soluções para fortalecer a segurança do seu software. Foco em APIs e microsserviços.",
-                image: "https://images.pexels.com/photos/5926392/pexels-photo-5926392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                image: "https://img.freepik.com/premium-vector/penetration-testing-on-a-laptop-cyber-security-concept_505591-717.jpg?w=1380" // Imagem ilustrativa de pentest
             },
             {
                 title: "Segurança de Redes e Infraestrutura",
                 description: "Projetamos e implementamos arquiteturas de rede seguras, incluindo firewalls de próxima geração, segmentação de rede (Zero Trust) e hardening de servidores, garantindo proteção contra ameaças internas e externas.",
-                image: "https://images.pexels.com/photos/5380598/pexels-photo-5380598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                image: "https://img.freepik.com/premium-vector/network-security-concept-illustration_107791-1478.jpg?w=1380" // Imagem ilustrativa de segurança de rede
             },
             {
                 title: "Consultoria em Governança e Conformidade",
                 description: "Auxiliamos na adequação às regulamentações de proteção de dados (LGPD, GDPR) e padrões de segurança (ISO/IEC 27001, NIST), desenvolvendo políticas, procedimentos e treinamentos para garantir a conformidade e mitigar riscos legais.",
-                image: "https://images.pexels.com/photos/5472877/pexels-photo-5472877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                image: "https://img.freepik.com/premium-vector/regulatory-compliance-in-business_335657-3000.jpg?w=1380" // Imagem ilustrativa de conformidade
             },
             {
                 title: "Resposta a Incidentes e Análise Forense",
                 description: "Desenvolvemos planos de resposta a incidentes cibernéticos e oferecemos suporte em análises forenses digitais para identificar a causa raiz de violações, conter ataques e auxiliar na recuperação de sistemas e dados.",
-                image: "https://images.pexels.com/photos/6050410/pexels-photo-6050410.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                image: "https://img.freepik.com/premium-vector/cyber-security-incident-response-concept_335657-2994.jpg?w=1380" // Imagem ilustrativa de resposta a incidentes
             }
         ];
 
-        // Dados da Galeria (com imagens mais alinhadas a empresas de cibersegurança)
+        // Dados da Galeria (mantive as imagens mais amplas para ilustrar ambientes de TI/Segurança)
         const galleryData = [
             { src: "https://images.pexels.com/photos/7438699/pexels-photo-7438699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Cibersegurança e proteção de dados avançada" },
             { src: "https://images.pexels.com/photos/5380604/pexels-photo-5380604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Equipe de segurança da informação em ação" },
@@ -483,24 +491,27 @@
             { src: "https://images.pexels.com/photos/6268955/pexels-photo-6268955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Conceitos e frameworks de segurança da informação" }
         ];
 
-        let loggedIn = false; // Estado de login
+        let loggedIn = false; // Estado de login para simulação
 
+        /**
+         * Gerencia a exibição das abas de conteúdo na página.
+         * @param {string} id - O ID da aba a ser exibida.
+         */
         function mostrarAba(id) {
             // Se tentar acessar uma aba que não seja 'sistemas' e estiver logado, faz logout
             if (loggedIn && id !== 'sistemas') {
                 loggedIn = false; // Resetar o estado de login
             }
 
-            // Fecha o menu de navegação responsivo se estiver aberto
+            // Fecha o menu de navegação responsivo se estiver aberto (para mobile)
             const navCollapse = document.getElementById('navbarNav');
             if (navCollapse.classList.contains('show')) {
                 const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
                 bsCollapse.hide();
             }
 
-            // Remove a classe 'active' de todas as abas
+            // Remove a classe 'active' de todas as abas e adiciona à aba desejada
             document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
-            // Adiciona a classe 'active' à aba desejada
             document.getElementById(id).classList.add('active');
 
             // Atualiza a URL com a hash da aba para permitir compartilhamento e recarregamento
@@ -514,6 +525,11 @@
             }
         }
 
+        /**
+         * Simula a validação de login para a área restrita.
+         * Em um ambiente real, esta função se comunicaria com um backend seguro.
+         * @param {Event} event - O evento de submit do formulário.
+         */
         function validarLogin(event) {
             event.preventDefault(); // Impede o envio padrão do formulário
 
@@ -522,21 +538,23 @@
             const feedbackDiv = document.getElementById("feedback");
 
             feedbackDiv.textContent = ''; // Limpa mensagens anteriores
-            feedbackDiv.classList.remove('feedback-success', 'feedback-error');
+            feedbackDiv.classList.remove('feedback-success', 'feedback-error'); // Remove classes de estilo
 
             const usuario = usuarioInput.value.trim();
             const senha = senhaInput.value.trim();
 
+            // Credenciais de login hardcoded para demonstração
             if (usuario === "admin" && senha === "allsec2025") {
                 feedbackDiv.classList.add('feedback-success');
                 feedbackDiv.textContent = 'Login bem-sucedido! Redirecionando...';
-                loggedIn = true; // Define o estado de login como verdadeiro
+                loggedIn = true; // Altera o estado de login
 
+                // Esconde o modal e redireciona após um pequeno atraso
                 setTimeout(() => {
                     const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
                     loginModal.hide();
                     mostrarAba('sistemas'); // Redireciona para a aba de sistemas
-                    usuarioInput.value = ''; // Limpa os campos
+                    usuarioInput.value = ''; // Limpa os campos do formulário
                     senhaInput.value = '';
                     feedbackDiv.textContent = ''; // Limpa o feedback para a próxima vez
                 }, 1200);
@@ -550,16 +568,19 @@
             }
         }
 
+        /**
+         * Renderiza os itens do portfólio dinamicamente na página.
+         */
         function renderPortfolio() {
             const portfolioContainer = document.getElementById('portfolio-items');
-            portfolioContainer.innerHTML = ''; // Limpa o conteúdo existente
+            portfolioContainer.innerHTML = ''; // Limpa o conteúdo existente para evitar duplicação
 
             portfolioData.forEach(item => {
                 const colDiv = document.createElement('div');
-                colDiv.className = 'col-md-6 col-lg-4 mb-4'; /* Ajuste para melhor responsividade */
+                colDiv.className = 'col-md-6 col-lg-4 mb-4'; // Colunas responsivas para os cards
                 colDiv.innerHTML = `
                     <div class="card">
-                        ${item.image ? `<img src="${item.image}" class="card-img-top" alt="${item.title}">` : ''}
+                        ${item.image ? `<img src="${item.image}" class="card-img-top" alt="${item.title}" loading="lazy">` : ''}
                         <div class="card-body">
                             <h5 class="card-title">${item.title}</h5>
                             <p class="card-text">${item.description}</p>
@@ -570,13 +591,16 @@
             });
         }
 
+        /**
+         * Renderiza os itens da galeria dinamicamente na página.
+         */
         function renderGallery() {
             const galleryContainer = document.getElementById('galeria-items');
             galleryContainer.innerHTML = ''; // Limpa o conteúdo existente
 
             galleryData.forEach(item => {
                 const colDiv = document.createElement('div');
-                colDiv.className = 'col-md-6 col-lg-4 mb-4'; /* Ajuste para melhor responsividade */
+                colDiv.className = 'col-md-6 col-lg-4 mb-4';
                 colDiv.innerHTML = `
                     <div class="card h-100">
                          <img src="${item.src}" class="img-fluid rounded-top" alt="${item.alt}" loading="lazy" style="height: 220px; object-fit: cover;">
@@ -589,39 +613,47 @@
             });
         }
 
-        // Validação de formulário de contato com Bootstrap
+        // --- Início: Validação de Formulário de Contato com Bootstrap ---
+        // Exemplo de JavaScript para desativar envios de formulário se houver campos inválidos
         (function () {
-            'use strict'
+            'use strict' // Modo estrito para melhor detecção de erros
+
+            // Pega todos os formulários que queremos aplicar estilos de validação Bootstrap personalizados
             const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop sobre eles e impede o envio
             Array.from(forms).forEach(form => {
                 form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
+                    if (!form.checkValidity()) { // Se o formulário não for válido
+                        event.preventDefault() // Impede o envio
+                        event.stopPropagation() // Impede que o evento suba na hierarquia DOM
                     }
-                    form.classList.add('was-validated')
-                }, false)
+
+                    form.classList.add('was-validated') // Adiciona a classe para exibir o feedback de validação
+                }, false) // 'false' para bubbling, comportamento padrão
             })
         })()
+        // --- Fim: Validação de Formulário de Contato com Bootstrap ---
 
-        // Define o ano atual no rodapé
-        document.getElementById('currentYear').textContent = new Date().getFullYear() + 1; /* Adicionado +1 para 2025 conforme o original */
+        // Define o ano atual no rodapé da página
+        // Ajustado para 2025 conforme seu prompt original, mas em um ambiente real seria `new Date().getFullYear()`
+        document.getElementById('currentYear').textContent = new Date().getFullYear() + 1; 
 
-        // Carrega a aba correta ao carregar a página
+        // Carrega a aba correta ao carregar a página (com base na URL hash)
         window.onload = () => {
-            const abaInicial = window.location.hash.replace('#', '') || 'home';
+            const abaInicial = window.location.hash.replace('#', '') || 'home'; // Pega a hash ou define 'home'
             if (document.getElementById(abaInicial)) {
-                mostrarAba(abaInicial);
+                mostrarAba(abaInicial); // Mostra a aba correspondente
             } else {
-                mostrarAba('home'); // Redireciona para home se a hash for inválida
+                mostrarAba('home'); // Redireciona para 'home' se a hash for inválida
             }
         };
 
         // Event listener para quando o modal de login é aberto
         document.getElementById('loginModal').addEventListener('shown.bs.modal', function () {
-            document.getElementById('usuario').focus(); // Foca no campo de usuário ao abrir
-            document.getElementById('feedback').textContent = ''; // Limpa feedback anterior
-            document.getElementById('feedback').classList.remove('feedback-success', 'feedback-error');
+            document.getElementById('usuario').focus(); // Foca no campo de usuário para agilizar o login
+            document.getElementById('feedback').textContent = ''; // Limpa mensagens de feedback anteriores
+            document.getElementById('feedback').classList.remove('feedback-success', 'feedback-error'); // Remove estilos de feedback
         });
     </script>
 </body>
