@@ -11,23 +11,23 @@
     <meta name="robots" content="index, follow"/>
     <link rel="canonical" href="https://www.allsecti.com.br/"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        /* Light Theme Color Palette */
+        /* Dark Theme Color Palette */
         :root {
-            --light-bg: #FFFFFF;        /* Main background, crisp white */
-            --light-card-bg: #F8F9FA;   /* Card backgrounds, slightly off-white */
-            --light-text: #343A40;      /* Dark text for readability */
-            --light-muted-text: #6C757D; /* Secondary, muted text */
-            --primary-accent-blue: #007bff; /* Standard Bootstrap blue */
-            --primary-accent-blue-hover: #0056b3; /* Darker blue for hover */
-            --secondary-accent-green: #28A745; /* Standard Bootstrap green */
-            --secondary-accent-green-hover: #218838; /* Darker green for hover */
-            --border-color: #DEE2E6;    /* Light gray border */
-            --box-shadow-light: rgba(0, 0, 0, 0.1); /* Subtle shadow for light theme */
-            --box-shadow-hover: rgba(0, 0, 0, 0.15); /* Slightly darker hover shadow */
-            --error-color: #DC3545;     /* Standard Bootstrap red for errors */
+            --light-bg: #1A202C;        /* Main background, dark charcoal */
+            --light-card-bg: #2D3748;   /* Card backgrounds, darker slate */
+            --light-text: #E2E8F0;      /* Light text for readability */
+            --light-muted-text: #A0AEC0; /* Secondary, medium gray text */
+            --primary-accent-blue: #63B3ED; /* Vibrant blue for accents */
+            --primary-accent-blue-hover: #4299E1; /* Darker blue for hover */
+            --secondary-accent-green: #48BB78; /* Vibrant green for accents */
+            --secondary-accent-green-hover: #38A169; /* Darker green for hover */
+            --border-color: #4A5568;    /* Medium gray border */
+            --box-shadow-light: rgba(0, 0, 0, 0.3); /* Subtle shadow for dark theme */
+            --box-shadow-hover: rgba(0, 0, 0, 0.4); /* Slightly darker hover shadow */
+            --error-color: #FC8181;     /* Standard red for errors */
         }
 
         /* General Body Styles */
@@ -38,7 +38,26 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            position: relative; /* Necessário para posicionar o background-watermark */
         }
+
+        /* Watermark Background */
+        .watermark-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* URL da imagem de marca d'água a ser substituída */
+            background-image: url('https://d2nzy1qhita6w.cloudfront.net/media/wysiwyg/ethical-hacking-with-kali-linux.jpeg'); /* SUBSTITUA ESTA URL PELA SUA IMAGEM DE MARCA D'ÁGUA */
+            background-repeat: no-repeat; /* Não repetir a imagem */
+            background-position: center center; /* Centralizar a imagem */
+            background-size: cover; /* Cobrir toda a área, cortando se necessário */
+            opacity: 0.11; /* Ajuste a opacidade para a intensidade desejada da marca d'água */
+            z-index: -1; /* Garante que a marca d'água fique atrás do conteúdo */
+            pointer-events: none; /* Permite que cliques passem pela marca d'água */
+        }
+
 
         /* Navbar */
         .navbar {
@@ -100,13 +119,7 @@
         ul li {
             margin-bottom: 8px;
         }
-        ul li::before {
-            content: "\f058"; /* Font Awesome check icon */
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            color: var(--secondary-accent-green);
-            margin-right: 10px;
-        }
+        /* REMOVIDO: ul li::before para os checkmarks nos itens de menu */
 
         /* Buttons */
         .btn-primary {
@@ -132,7 +145,7 @@
 
         /* Cards (Portfolio and Gallery) */
         .card {
-            background-color: var(--light-bg);
+            background-color: var(--light-bg); /* Cards agora usam o background principal escuro */
             border: 1px solid var(--border-color);
             border-radius: 8px;
             box-shadow: 0 4px 10px var(--box-shadow-light);
@@ -172,21 +185,21 @@
         /* Forms */
         .form-control, .form-label {
             color: var(--light-text);
-            background-color: var(--light-bg);
+            background-color: var(--light-card-bg); /* Fundo do formulário mais escuro */
             border-color: var(--border-color);
             border-radius: 5px;
         }
         .form-control:focus {
-            background-color: var(--light-bg);
+            background-color: var(--light-card-bg);
             color: var(--light-text);
             border-color: var(--primary-accent-blue);
-            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+            box-shadow: 0 0 0 0.25rem rgba(99, 179, 237, 0.25); /* Sombra ajustada para o novo azul */
         }
         .invalid-feedback {
             color: var(--error-color);
         }
         .list-group-item {
-            background-color: var(--light-card-bg) !important;
+            background-color: var(--light-card-bg) !important; /* Fundo do item de lista mais escuro */
             color: var(--light-text) !important;
             border-color: var(--border-color) !important;
             padding: 15px 20px;
@@ -197,7 +210,7 @@
 
         /* Footer */
         .footer {
-            background-color: var(--light-card-bg);
+            background-color: var(--light-card-bg); /* Fundo do rodapé mais escuro */
             color: var(--light-muted-text);
             padding: 25px 0;
             margin-top: 40px;
@@ -226,17 +239,22 @@
                 border-color: var(--border-color);
             }
             .navbar-toggler-icon {
-                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+                /* Ícone do toggler agora branco para contraste no fundo escuro */
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
             }
         }
     </style>
 </head>
 <body>
+    <!-- Div para a imagem de fundo como marca d'água -->
+    <div class="watermark-background"></div>
+
     <div class="container mt-4">
         <header>
             <nav class="navbar navbar-expand-lg mb-3" aria-label="Menu Principal de Navegação">
                 <div class="container-fluid px-0">
-                    <a class="navbar-brand" href="#" aria-label="Página Inicial AllSec TI">AllSec TI</a>
+                    <!-- Ícones de checkmark adicionados ao lado do nome do site -->
+                    <a class="navbar-brand" href="#" aria-label="Página Inicial AllSec TI">AllSec TI <i class="fas fa-check-circle"></i> <i class="fas fa-shield-alt"></i></a>
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -375,32 +393,32 @@
             {
                 title: "Testes de Penetração e Auditoria de Aplicações",
                 description: "Realizamos testes de invasão abrangentes em aplicações web e mobile, identificando vulnerabilidades críticas (OWASP Top 10) e fornecendo soluções para fortalecer a segurança do seu software. Foco em APIs e microsserviços.",
-                image: "https://via.placeholder.com/400x200/007bff/FFFFFF?text=PenTest+Web" // Updated placeholder color
+                image: "https://static.wixstatic.com/media/9adcc5_38347e344ecd41d8822e6576c99e55e3~mv2.gif" // URL da imagem do portfólio a ser substituída
             },
             {
                 title: "Análise de Vulnerabilidades e Gestão de Riscos",
                 description: "Identificamos e classificamos vulnerabilidades em sua infraestrutura, redes e sistemas, priorizando os riscos e desenvolvendo planos de mitigação eficazes para proteger seus dados.",
-                image: "https://via.placeholder.com/400x200/28A745/FFFFFF?text=Vulnerability+Analysis" // Updated placeholder color
+                image: "https://blog.ecotrust.io/wp-content/uploads/2023/06/indicadores-gestao-1.gif" // URL da imagem do portfólio a ser substituída
             },
             {
                 title: "Consultoria em Conformidade (LGPD, GDPR)",
                 description: "Auxiliamos sua empresa na adequação às leis de proteção de dados, como LGPD e GDPR, garantindo que suas práticas e sistemas estejam em conformidade com as regulamentações globais.",
-                image: "https://via.placeholder.com/400x200/6C757D/FFFFFF?text=LGPD+Consulting" // Updated placeholder color
+                image: "https://www.dentaloffice.com.br/wp-content/uploads/2019/10/prote%C3%A7%C3%A3o-de-dados-para-pacientes.gif" // URL da imagem do portfólio a ser substituída
             },
             {
                 title: "Segurança de Redes e Infraestrutura",
                 description: "Desenvolvemos e implementamos soluções robustas para proteger suas redes contra acessos não autorizados, ataques DDoS e outras ameaças cibernéticas, garantindo a continuidade dos negócios.",
-                image: "https://via.placeholder.com/400x200/007bff/FFFFFF?text=Network+Security" // Updated placeholder color
+                image: "https://agitelecom.com.br/wp-content/uploads/2024/03/GIF-AGI-4.gif" // URL da imagem do portfólio a ser substituída
             },
             {
                 title: "Treinamento e Conscientização em Cibersegurança",
                 description: "Oferecemos treinamentos personalizados para sua equipe, capacitando-os a reconhecer e evitar ameaças cibernéticas, fortalecendo a primeira linha de defesa da sua organização.",
-                image: "https://via.placeholder.com/400x200/28A745/FFFFFF?text=Cyber+Training" // Updated placeholder color
+                image: "https://media.giphy.com/media/NPXkCN2FutVO1Nt4P9/giphy.gif?cid=790b7611a25b0b89e64cef8c9dad4d3a06d231b4845ef450&rid=giphy.gif&ct=g" // URL da imagem do portfólio a ser substituída
             },
             {
                 title: "Resposta a Incidentes e Recuperação de Desastres",
                 description: "Desenvolvemos planos de resposta a incidentes e recuperação de desastres para minimizar o impacto de ataques cibernéticos e garantir a rápida restauração das operações após um evento adverso.",
-                image: "https://via.placeholder.com/400x200/6C757D/FFFFFF?text=Incident+Response" // Updated placeholder color
+                image: "https://tm.ibxk.com.br/2013/3/materias/83390579727123433.gif" // URL da imagem do portfólio a ser substituída
             }
         ];
 
@@ -409,24 +427,20 @@
             {
                 title: "Auditoria de Segurança",
                 description: "Nossa equipe em ação realizando auditorias detalhadas de sistemas.",
-                image: "https://via.placeholder.com/400x200/007bff/FFFFFF?text=Auditoria" // Updated placeholder color
+                image: "https://www.grantthornton.com.br/contentassets/02937300a56e4f3ca76b4f8a992318e4/whatsapp-image-2024-04-04-at-4.45.04-pm-1.jpeg" // URL da imagem da galeria a ser substituída
             },
             {
                 title: "Treinamento de Equipe",
                 description: "Sessões de treinamento para capacitar profissionais em cibersegurança.",
-                image: "https://via.placeholder.com/400x200/28A745/FFFFFF?text=Treinamento" // Updated placeholder color
+                image: "https://www.genetec.com/binaries/content/gallery/photostock_server-room_techinician_gettyimages-1334003868.jpg" // URL da imagem da galeria a ser substituída
             },
-            {
-                title: "Centro de Operações",
-                description: "Visão do nosso ambiente de monitoramento e análise de ameaças.",
-                image: "https://via.placeholder.com/400x200/6C757D/FFFFFF?text=SOC" // Updated placeholder color
-            },
-            {
+              {
                 title: "Reunião Estratégica",
                 description: "Planejamento e consultoria com nossos clientes para soluções customizadas.",
-                image: "https://via.placeholder.com/400x200/007bff/FFFFFF?text=Reuniao" // Updated placeholder color
+                image: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhUTExMWFRUWGR0aGBgWFRcYGBcXGBcWFxcXFhcYHSggGBolHRcXITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGhAQGi0lHR0tLS0tLS0tKy0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKgBLAMBIgACEQEDEQH/xAAbAAACAgMBAAAAAAAAAAAAAAAFBgMEAAIHAf/EAEkQAAEDAQUDCAYHBgMIAwAAAAECAxEABAUSITEGQVETImFxgZGhsSMycrLB8BQkQlJzgtEzYpKis8LD4fEHFTRDU2ODoyV00v/EABgBAAMBAQAAAAAAAAAAAAAAAAABAgME/8QAIxEBAQADAQEBAAEEAwAAAAAAAAECETEhQRIDEzJCYSJRcf/aAAwDAQACEQMRAD8ApWLbgaOtEdKDP8qv1o9ZdobM4DhdSDByVzDp+9E9lctAr0CnoGS5Vwk9fxp0urZuzv2dK1p56iqVA8FqAyVI0A0Fc4s6iAIrrex5+ps9SvfVSyEU7r2cXZsQaeVhJkCSAPykkGiiLW6nJxIPSMj3aHwohWEVO1aJ205PIW1UHnZjLUck0mculKu6lHag+lA4CO4JHwrqVtbCUqUMo/yFBL4uhhwnGgE/eHNV3jXtmqlTYL7OJiysfhI90URpcbvk2ZKW1srLaEpCVohSikJGZRke0Ucs1sQ4AUqBkSBoYOehzqbFSpXWkqEKAI4ETQC97iaWoJwjNJ9aTEFIyV6ydeNMVULceeDwQfNP6UoLXM7Xs2hQQtpeEuJC0pWQCQeBGXZHbQu0WZ1vJxBE7xvyUMtx9bdNMgVz7uH/AGmD3kGn613W05MpAnWIE9Y0V2ir/VidSuPSFTB1nxKx/iCq9oPjp2kke+nuroN67DpPObMH93LwJ8j2Un3pcNobkFOIDeBmB0iARu1A0FVMpSuNCrMiTl2cN0eODxq7h3RPQd4gAT1goH511SsshUeHHo7ZI7RRUERnHSTpoST1c4nqWr7tOlA609/hPT1mZ/Ofu1pZs/8ALs08P5eBqxeDUf59uvTJPaVcRUtw2Fby+TQMzqTmAN6lcRn2zH2jC+H9aFOXz0bjuzHYQN6qrSZ+f9d/jxPNe39jm4MOLGX2gk7j1dPeeJkUnZFRUAHQZO9B4TnzjxP+cmVKqwvlOXz0f5eH7oqqsZ/Pzv8AHp5zFfNzFiElxClH7KZkDcTOk9cmeskEsZ5/Pz860QqpPdWfz8/INVg2okDeTGoAz6TkBVt4Z/Pz8moqZGy5LmabAUVJWvoIIHVx+euiy01z4/Pz861ui0rTotQ6lEeVTpWzm9AzNLt5X2nRsBR+8fVHUN/l10OtFscWMK1lQ4E+fGq2EU9Fa0KiTJ317FbV5TJqals60AypOLhnA7oz76jNeAUgIG2oO4jsEDqg1oq0IO/wP6VXTZVn7J7cvOtxYFbyB40vFeiDNuBcASJ6TTHgpYuuyQ4M6biis8tNMd/Vi2bEtGcC1o6DCh4wfGgd47IvtjEnC4BrhyIAzkg/AmugotIqK8ngGXD+4ryNaS1k5/d7QLYyrp+yqYsjXUffVXMrqPo011DZkfVWfZ8yTRlwY9EqysrKhRZ2pvFbVneWmCQsABQkZuITug76GXjtIhLy0OIUIKoUkg5BShJBgjTpq7thZlGzuAJJxOp0E5csDOXRSZtCqbQvrPvKrXGItdbQkKQAQCkgZESCI3g1E9YG1apjqqdkc1PUPKtqyWoiyuo9RyRwVn2Z6d9DL5vItkcqgjEkplOaRvkznHfTDQ2/HByTgO5tR/lV+lVKmwn2OyqddsTjYxNoQyhRGUKbMLEGDkd4FdCoLd9nTDaQAAEpkDLVA4caJhhQ9VZ6jmPGjL0RPQXaNeFt1Q9ZKRhO8GYkd9TW28nWlc6zqWiM1NkEjrSqPe7KpX+6HLO4pB9ZKCAoFJ9dJzB6DSkO0vWCwN21xxtaEgpTixAQTmBnGU56kGorbsZaG82lYhwOfTlv1zkxv4mr2wCDy75IPqgTukkGJ7KeadtlE9cTvGyOo9dspGmWaew6efDhG9y2paArArCSRIyziYkHrPf211K/QACYE8wTH3nAnt1pcu/Z5m2NrXhS2pLikDAMMgAEdA13Cn+vPS0C/wC/bSkftP5EH+356taze1Fon1kzuUEjKRGW6esUUvDZG0tg4SHE9OvfuHXSs5Y3G1jlEFInUjKOM8Kc1Rdr7iyZJzJzJMmSeM5mfLrodik0SUJTzcx0Z+VCROKIpwqrv61BVq02dYJxJUOtJHmKhszYW4hExiUBOsSQNKA0JrU01o2dZGpWrtAHgJ8amRdjKdG09oxe9NZ3+SNJ/HSclJOQBJ6BPlU6LvdOjZ7YHnTcRGQy6qiVS/qK/pF5u5V/aUlPeT89tWEXMgaqUeqB+tFTXhFL91Uwiki72h9gdsnzrdQSkbkjsFU79UoYACRM6EifV4UGW2rUinMd+ouUxutDTtqbH2x2Z+VVHLejcCeyKHBJ4VlV+Ii50Xum0y6IHjTkpuke4U+lFPhqM+tMLuCqTVe91ww77B8qlDSqp32SLO77BrZkVbsPMTXVdnR9VZ/DT4ia5ZdiRgTXVrjH1Zj8JHuipy4MV2srK9qFBd6OQkdLiR/NQi9GEuKOJtK+kpBPYdaIXqrJrpeT7xoW9aPSR0itMUU3RWV6a8rNbKEbSI9A+Z/5Kh3JX+tF6DbUq+rP/hK9008ellwJRd7n05p0J5mFIJBG5BGYmdab6FMn0wHD9DRWnkMXtCNpUDkHMt6B3uIFFqFbSH0C/aR/URSnReAOw7JPLwophScx7O8HI00+mT9xY/hPxHhS9sCMnz++PcFNdPLpYzwv7Q21Ib54UglbQzEjJ1BOY6Aaj2CWCwuCCeVUYnPROcVf2iTLYB++1/VSaEbI3Sy5ZgpbYKsaoVooaDJQzFHwfTU96p6j5UrWxc2hpsxhW7hUIGYDLaoz6TNGl2BaEnk3liAYDh5QbzEq5wHbS6666LSzjQlaw4TzDEkMtzGLTKDrRILV627F2deaJQriDHfFA7Pcb1mUVMBpxUTLiVY4JOigqEjI6CnL/e6E/tEuNe2g4R1rRKR2mqdhtCHHFKQtKxyac0qBHrubxS9VuE627RWlsy5ZgBxSTHfnQMXy7aLQ2CQlJWnmpHSDmdT5dFMV9uHlnxiMYk7z/wBJFC7lsaDaWoQCcU5J3AEkmNBA1pfpX5+jy7PUJYo/aLMJECJqNd38D4VnprsvuWeoFsUbtFjIMZZ1VfsxGoigBBbrUt1dU3Wih0UAs7RZcn+b+zjQZTh4+A/Sjm04zb/N/ZW7VrsTYhLTi85laW53DXUDqrfHjny/upbxdNbqaUBJSoDiQY76KXheSlKHJYmkxoFnM559HV0UNdcWc1KJ6zNUkQ2cEuiugKapE2XzeFdCUKx/k62/j4KB7LLM8CY8YodtJaB9HdBTmW1HuKRr+YUnusWhsjAtcH7il9G7qNT2+3v/AEdQWmQQU4lTigkTqZ3DdV6jMOsq4Arr10mLOyP+2j3U1x5n1eyuuXWVFhowBKE6Z6JApZcOQSBr2tG9K3FSYBegzY/HT/dQdSCXh7Q+FG7wIxMfijyVQ1ChyyR+8nzFbRnTca8r2vKyWygm1P7B4cUx3wPjRuge0qvRrHEoHetsfGnj0suLLY+sHrV5GidCrMoG0HPPneVFaKIyg20p9Cr2k+Bn4UZoJtMfRfn/ALF/pRj0ZcUdgRzX/wAX+0U00s7Bj0bx4unyFM1PLox4F3+eYPbR4GfhVXYj/g0daveNT7Qq5qfb8kKPwqLYkfU2+tXvqo+F9GXzzT1Utun68x7bn9BFMdp9U0ta29jrdP8A6gPhRBemhxUAnopdbu1ovLISEnk0GU80yVOScuoUwWj1TQuy/tF/ho81n40od6TLc0eXfBJPOGZ19RFb7Mpi1D2F+7Hxqa1iX3/bPkkVlwI+to/Dc/s/Wo+tf8TS4nSsPVUrgzrCKCULWmYqR0pI3Hure0J0r1xsRQewmz2VKpkVFbrClIkTV9hoGaitrfN368SaSixbrsS5abO2rRSST3KVuI+5HbVHaHZjkUrdCxhkc0IIiSNCVGjNqZUq2MpSrCeT1iYyd6Rwjtrzatl5FmIW4hacQ/5akqzk+sXCD3VrOMMu0hcga0U1V9B1qE1W0iWyTUu9tP6kUmbHftY7dOz4U8qFY59b4cLRtAxDP7GvdVG32hP0dxM5k8ZOoqo0UkjIpB3lRjfvj4VTtihhgaVcTY3b9XsrsV0n0DXsJ8hwrjaTzeyuvXefQNT90eQoyKQTmvQahbVknqqScqQAbw9az+2T3JNCrMD9IT7afMUYtxGNj857kVQshBfT7Y861nGZrrKysrJb2l3aNWR/EaH/ALWhTBSxfpPe+0M/xkfpVY9LJdu9P1hR9qjdKVxvKNsckkgY4ECNQNdaYXr0ZSsNqcSlR3EgHPTWjIRcpe2pPox+If6btH8We6ljaVZKU/iL8G3hSx6Mm+wQ9C4eLhpmpZ2APoF/iKohfN5qaIwiQPXkZxE80HNWXDfA4w8ulLqINpFZJ9pXgy6fhW+xo+ptfm99VCb8vNHJoW4eTJUvmmSQeTdb3DTERRbY9Q+iNQoGMQMEHPGoxkdcxReHBS2nmHs8xS0wZt7HU95KHwphvRUN9qfeTSsw8E25okxCX/fcHwonBem+0qGE9nmKF2I85zqSPCfjRC2q5hobd5zd60j/ANaD8aU4PpacEuv/AIivOK2uL/jEfhO+8zUH09nlXEl1GJTi4GIZysxnpnVq5k/XUfgu++xWf+TW/wBovtHegs7RcyJ0SDpiM69AgnspDsG2toS8C6oLbJ5wwgYRvKCBqOBmY6Zpz2pvBltspdSFlQMJgEaGCZBA04GuU2txClSlOGfszIHVkPKtMfUZeR2lwzFbuClDYO+eUb5BZ57Q5v7yJgfw5DqIptJNRfFT1AyNahtoyqZKomorQqRpSV9AHD9fbjc0P8cV5ts6fown/qD3V1pabShFuSVmByIGfHG7GlV9s7e24wgJUFHGCY9lQPia2nGGXaV05z11CoVI3vrQmghnZEw6T0DzNPoVOdIeyKhyh7P7qeg4ncYrHPrfDhAbLkDTiOYPMVDeTyimChA00QAR2jdU7lrUpIQVKwiIGLSMhVK2kxJUToM+HXW/jH159k9XwrsNiB5NHsjyrj8ZdldisoAbSJJy+6RUZLlWWgIqYjI9VLNo2gUHClEEJMZ8Rr41es9ucUM40pa0LVe8lw6x0Bz+nQuwvRaEyftfOVXLYyS61J+y57lD2mfSjDri8pNaTjMyvX20gwpRH5f0Na2TaFhxYbQuVGYyIBgSczvgGl6/7OQaTmLSpp1Dg+yqe45+FLHGU7dOzJpXvL1k9NqR/WH6UzoG8b6WLYolbf8A9sDucX+lTidCbBbeQftDpGMJStQAOpLqEgZThzoc80pwG0KAWlZkSTMnWc9BmOyjWzbiPpD6wk5JXIOYPPToD+tDLTe+N9JWApIICkxhTE5ggEjKq/NvBMsZ0+3OtRZaJ3oToP3RvnOl6/181A/fWfBf60y3apK221pEApECckxlh7IjspTvoZN/+Q+Kf1pToq1/s/VFnX0uqjp5qay+LSovEoaxKQQmcwc8Cs8wcjEEaTOsEb7DMYrGRJEuKgiJHq6T21TeeAxBThXyQCYSgJClZFKgd/VpJ6M1Zu+JvAS8ruU42lxxcwnCedJxE4gCSSTzSdeA66Y9g0htDicMJlJCuKsMERrOQPbSQt4heCVQvPPM4hod3E10vZIoVZGlIjnJlUR62hxRqREdlO42f+NJlLNa9W73Po/zI98Up2ZavpyMOuB3xedFNt7+oPaT50tXKPr4/BWe99f60TiL0atVrWQtJCcMGCNdJqq2+UJtCwMWFacuPo2u7r3UVvVIDSshofI0h7XPuoWgoJHPUetXJNIGRynMge0aNb4c8voFtPYypa1BLbZQOclByGIwNAB89VM1xW1s2pCgoxySmwSDmtS2sI454TnShfOBILTcmVqxqUqcWBakpjIawVdopi2TusIbQ4slSlDEgSCEhUFBH70Gdcp0mnP4/PVZZy3/AIjW2FzcskLBIKZnUg80lOX3pAGn2ugVzpuxLZtLaXPR4XUSpRgDng4pOUAZ10HaPaINNFGELWqRrAEZSRGZndplrmK5xe97OWhQU5EgAZDcABv37+2jHDKe/BnljrX2GVCii8WiMllzAvcFBYyUY3wrqlM766Ca47dN68m62twFaWyMgYMJEJjjGUA8ImutWC1odQlxCsSFCQfCCNxBkRxFTnBhdtwKheFWAmq7prNpCJtPasFqComGxlMTzl74PGq9/W1pbaeTIkRIhI3HPm9gzqPbFf1ojggfr8aATW04wy6vsr5s1oqoGn4qZvnSZSnrxdP3UmmQ1skPSK6/1pyQwo6RS1sjZ0JUSHArPoGm/JRypzTWOfW+HHLkv9PlWlqdkAT0/pVhF2KOrnhPxFR26wBtIOIkzwirmmd22TpXYDbm04UFacZGScQnITp1A1xoqyqzZ7ycVhdKpWned8ceynrZb0aLlbSrM6nWnSysgJPV8KV9nmUwkwNBupwbHMPUaV6c4D20+ma6G3PdAoddWdoT1nyNFbYn0yehtfiQKqXQ2OXB9ryNX8R9ELay45KQgaanLuPGkay3Ul55tKlEBaiCEgTEmcz1cKdr5fUkGFEUjs3ktpaFJbJKSTJEpzxAnpiamKrqDcABI3ADM5wMqV3hz2em1qP8z5okmw2tWZtDafYZnxUql11h8ONBTpVL5IhKUwUofMwBvjPrNEFU7DeYYfVDYOOQTvIJnzFELzsXOxp0IkidDOh7CKVH23i6iVAnWEJJJgk5DfRphNqkFtFoJyBBbKUkA6HP4VpEZb3wz7HWwfRhiUkQ4sCVAZTJ16SaE3y8khuFJMBcwQYMt5GN9S2ez2l0pK7FBESV8icwM8MnIHgRwqS07N40iGeSVJ0UCIOHUBQzy6evdU3UuznsQXFeIbu9QSvC5zlDKY01yIGQOtAFXxIJccCpUN4mOjwp4sFz4LGqzEg4goSUkCVDUg0Da2TQgRyiTJ+y1HjMUY2SjKXRKvdQK0qQrFAmR0GZoncNot7CVPWdClslagpIBWmR95CecnKOcNxGdGrXsk2rLlHJ/KRv3QOPGtE7DvpzafKSeAKT3pXV7xsTrKLLe2n0ghvkghwEGFrUASJnPBlrvivbjcWu2nkyhKksqBKgVj9rJEJKc8xvq+m7nURyxSeYEypRxGJnnKk55E9Vb3LYeScK0MySCCoOKUCDBOpA1Azisr/prqa/2zaq1WlizlwqbcGIAgNKRAMiZLivKkW238p7CVJBwqxCFEc7m5mPZFPV/wB0LeS4VZFSVBILg1iQI0yyrnz1wPNDnYx7LRX4zTxFk+BdrQAtQ0TEifuqAUBPGCBTXsztGwlnk3ULKkIgYQDiOKEhOfrQRrwkUAFhS4UguOAgRJaTB5yjnDkjUDQ6VZfuxdlZW6hwLCoSqEKSUghW8/Zk9+GtJq3VZ7uPsQbQ2tJcgfZCUk6yQkSZnMyTrOVAlV6uSakDZUEgCSch1zVX3nIj7u9qAGujf7Ogr6OufVLhw/wpxdQmPGudBNFrDf77DZabUEgkqJwgqkwMiZgQBu31llNxrjdXbrdV3BQq674MtMLlS8CSpc7+SxmRGv60TcdHGsK3jmu15+tudASP5EGgho7fzPK291MxOHOCdGm9woVbbGW1RIIictRO4jccj3VvOOe9QJVBqRxZ4RNQqTFSPqmKZGXYwet87qZyoilrY3Q/O6mJRrDLrow4X0mqd9nmJ66voSKoX56qOuqnU3ikyjEUpOQJA7yBUTEpC0nIgwev1T5VO0sApJyAUCeoEE1HerqDaHVNmULWVJMEZKViGR66uM66Ds4OanqFN49Q9VIVzWwJCddBuJ8abbPeaVIMDdUfVILcv0//AIT4uAVSuJ30w/N5GtrYpSnydPRf4godYpS4M9Z6sxWnxH0Wv94QaT3V8xPb5mvNoHTiOdUbIfRpneKnXivp+ufaZPJNhSF81ISVApMlIg5TO6q9rdJVZVIzxPk5j7OB0KPYkqPZS5dD4hSe0duR+FHm3An6IFEJOJ0844dW3gJndmO+iCqN3XuptSGghJCgszorJKla9kaVaTtUDKTyje6UkKjqJz8K3aufAhbi4UpKTgKQ4ACQUnMpCVSCeNTWbZpotJcUhRKkhRlaUklQBCUgIOpMCTOdE0KoWG+LM4qF2l9XQp4J8ChPnRdtuzJUlxAUSMwStZIPRmRVCzbD2cOELcIUIhKcAnmAlQkEkSVD8tBL7ZaQlfIDJMDEDmVQ4Tnv3Dsqtb4nf/boCbSlUEYjO4LB8MUCpXEmPU7yke7NKdwWdxsobeONQZKikqUecVJCAVYtecBlxqza7StCgltO8JzWRJPDCBmYNTpW1915SVRyYUVEBMKwxzSTqkgwQQZI3RrRZm0oUBr1KJBG4ggmkle055Xk4PqlU5KHMSonJQmebGu8UQuzbFLwUQgKCBKiW1DCNM1CU9lFlEsNClIiAAOqB5VC4lzklciUhz7JUMSZkaiRunfQG333aC2pxqztBtIJ5RSsWIJmSlIg7jUTNltS0FTlrU2gJKillARun19aNDba83bySmXPogH3iVIPYVEgUBb2ocQuHFoWiNGnCc+OLCAd+U1Q2WYFodaW8OUJDilY5VOEQJxTvNBdpkYX1IEQmNBG4VcTTFbdudzaCelayrPqH/6oRatprUQFcphCpgJEEDTFx1kDM6Gl01PbTzsP3QE/wiD4ye2gtthaRAASJ45yc5rLK7BUeCTHWRh/u8KrCt0nmq6SB5k/Cq/VpfmRompkN43AgfaUEjtISKhQc6uXIR9IZnTlEe8KkzmlX/yCugf4QFS2y1EHWh7tsQi2uKUqBHX9hA3VrarUhRyUO+POsLPW+N8L14rKrQ4YJmMxOXNTnlVa0Ek+sSIGpnj8Z762tbxDqyCRnuPQBUANbTjG9ameNYT01sa1NMjXscMjTCaAbIDmmjxNYZddGPC79LbH2iepP61Svi2JWEgBWR3keQqqEmo7QdK0mMZ3Kt1nKqyzLkExoJ7BnVggnIAknQDMk8AKOWXYu1PQS3gHFRCe9OvhVRNV7BbVpgBcx2jspvu29Bh5w7qhujYltWanCQklOWiikkKIM6A83rSeij7lzWZhpSgkGBqozStgkqg5bkF1UH/lD+pNCmrWlKiSoaGqF63qhTnNSAIAMSBHYR19lC8Sc8uI146Cq0Sa/wC1JKjB+YqkxbEhCRqY4H/TxqrbnJIPECqqHiNKANXZe6mXA4lGKJkHIGeMA+dOdwWh0uY3G22uYpSQmcUlMc/KBkf1rnAtvEd1PFyXhyjPKkyUpVjzjNInM9Ig9tFkEGXHFrs76lmcIyz+0YHgk/znhRywCW2E7ktoUf4QEDvCj0YRQS1gCwugHEYGac5JWmSI4k0QbUhKUqLpQQ0hJCTI5oOqYMHOoqi3tywVWxnACpwp9UdOMA/y+NU7VYuSPJDMhaAQTIKiEqIkDSVx1VdvC3MG1suotKVOJBQZwThOYASnUyTqRr3Cze5UFWlSRIemM4gBkDuFXL5pNnuzVYwFWwnUBkEduCD3Ghu2qy2lBTkSrXhCT451cuVM2leLIhoZJUYAJSQAciQBA0qTadKeTwqOIKOioyjeCIM1M6d4VH7qKUcuSTiYUVTHrLSkSCDwO+NDTLYbcw5YCWy3JbGJKcIIXhTiBSM5EdwoLeNrJbW0nIBtATmD9ppIOgg59PXTA9d7bVldwg4lCVKJkqVkJJ7TRkIgCgbsVxDTg7ef5yD20VcsYW2tqSkLSUEpiQFApynfVGwWVJsKERktEn83ONUNo9o12cBKEIJUn1i4ApBM58nhJIy1/SgB+y9lDT5bnEEIfTMROG0hMxu9WlbaEKWeWKczGIpSS3zkpIhySDmTlwjMzULl4Dk0plWJAUCrEZWVrcUqf4hM61K7fQUwpooKZiIMiQEAZHT1enWnCofdywleaUqyPrAEAASTHHLKqilSZ41K1kFHojvy8p76gpk9r0nIDpPwrEia2WmIJBA8+MGgNrNZ1LMIBJ8ukndTBdtxJAlZxKzEfZTu7evprLhOFBEDUmQPWHHxH8VXy7CuhQ8QPiPdpWqkDP8AdqAogCIqB6xAb4ok2rnE1HaM6natAhs5k1GW6uuGJFQKNUhXKa1wipia0VTBr2UTCDRhRoVswPR0TUa58ut8eEUWkfZT3z/pWr5VliAHCAB5VEbUrdl1CtSonXOt9MRC7ngl1tROi0nuIrpt5bQAIIQYUqEhXAnVUb4AUeyuTsNqkQN9G1uhSsKlgFOXOMSTGIjiMgMvu9NKwSm1e0IQkIQoJSkAJAGcAQJ176GXpey3EwSYPcaHNtI+8T7Lbp/tirEwICHO1CYP8SqNC0N5PUjWKjbQVHCdY8RRJAM/sv5wPgfM1E7ZlSSlISeOIkg9EAVRAlqSRhByIEHsqoat2uYGLWTPfVM0Bhoxs46sqU2lSgFCSAYmIHkaDGmDYZGK1R+4o+7+tAGGLPbNE8i1uxpBKj0wdKVrVbnpUlxalEEghRmCJBrolutrTf7R5tPQCJ7s1Vzq+XULecUgyhRmYImQJ1z1miCmW5LoDTKXQ5DiklSgAklKVAgJhQJGR1y16Klv55txr0SQnETkkASoqRnllOlDXdsFK5qGURux86B1CIqmxejmNJUlJCVA4Ep6d0b++jQ3D5sswUOLQoiUNNpPCYE+VWNpIUiDGtRXP/xNpPQ35KqO/FEiMhUzp0rlZx4QAcSkDPglSF/203Wp8qs60aSOveKRSopdmdD8KMm34mHoJBCNx056Bl308hDSykfRkNhZCg2kSBJGQneIPbSLtFcT+ILEKB5oCMRUYlRKgR15zwpwuZEMtz9xPH7oqO0OSl5zcByaOEJPPI4SuR/4xSgscvVZyNRB6QQd4yB10PdWhRTNY7UC4EuBJSEYcxIjEtRJBy+0e6g9osY56pwwMQTE6kAJ6IkCaog9xMJqEJJ0E1M4pSgATkNKlYUAQco3jiDMidNCRrQHrTGEJnVwHT7OYjxiq61KOqp6z4Z1etqgAlInmiJ3HpFVHhMK+8J7dD459opQ6K3U6cAncTHUciPLwq88sx06jr+cu2hNmbTh+dK3UlW5Z7c+6ppxeD2+tHV5TVVp0xu7OuvHF0KROLqFShXjiqiJqmbYmta8JrymDjs5+zogpVDrgPozVtaq571vOESazHWVldDBO3aFDQxR67L4IyUkHqrKykIOC9bONTFECylSQpOhrKyj4asWI1FaBAivKylBSdeohRH73nQ4msrKonlepWRoSOo1lZQTAkmp0sZcTuA47uusrKYMGzbNjVAw+ljnBwnM5ThEwR0a0cQpIfSgQmEEwBA9Yx0b6yspGvWB/C7aDMSUdeSToKEX5eSswnLpOauw7uzvrKylDpW5XnTvondqpbf/AAx/UbrKyneFDO3biloYfWwgJ9owlM9EkVteNoShgNjQJgcdNT01lZQZIQqCT2D+7wy/PXrtoHqk5KOfDQj+49FZWUEFONEE9Gu/vjSvEa1lZSCxaoIB36H4eGX5arjMEcM/gfh3VlZRDSN4gMvA/rUiHSRn8iABManprKykb3FWinKysoCEmtTWVlNLWsrKymZtuM+jqypWdZWVz3racf/Z" // URL da imagem da galeria a ser substituída
             }
         ];
+         
 
         // Function to load content dynamically
         function showSection(sectionId) {
